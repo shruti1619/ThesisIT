@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+header {
+    background-color: #ADB5BD;
+    padding: 15px 100px; 
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    
+}
+
+header .logo img {
+    /* position: fixed; */
+    /* padding: 20px; */
+    /* margin-top: 0;
+    margin-left: 0;
+  justify-content: space-between; */
+  position: absolute;
+  left: 20px; /* Keeps the logo in the left corner */
+  top: 5%;
+  transform: translateY(-50%); /* Vertically centers the logo */
+     
+}
+
+
+.contact-section {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;                             
+}
+
+.contact-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 10px 0 5px 0;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: #212529;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background-color: #212529;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background-color: #343A40;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #343A40;
+    color: white;
+}
+
+footer div {
+    flex: 1;
+    margin-right: 20px;
+}
+
+footer div:last-child {
+    margin-right: 0;
+}
+
+footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 8px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,49 @@
+body { 
+    font-family: 'Poppins', sans-serif;
+    margin: 20px; 
+    background-color: #f4f7f6; 
+     }
+
+.container { 
+    width: 1110px; 
+    margin: 20px auto; 
+    background: #ffffff; 
+    padding: 25px 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.submit-button{
+    background-color: #4caf50;
+    color:#fff;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ADB5BD;
+    padding: 10px 20px;
+    height:50px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+.navbar h2{
+    color:#ffffff;
+    margin:0;
+    text-decoration: none;
+
+}
+
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+th { background-color: #f4f7f6; font-weight: bold; }
+td { background-color: #fff; }
+.error-message { color: #e74c3c; font-size: 0.9em; margin-top: 5px; display: block; }
+.data-warning { color: #e67e22; font-style: italic; margin-bottom: 15px; }
+.info-section { background-color: #f9f9f9; border: 1px solid #eee; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+.info-item { margin-bottom: 10px; }
+.info-item label { font-weight: bold; color: #333; min-width: 120px; display: inline-block; }
+legend { font-weight: bold; font-size: 1.1em; margin-bottom: 10px; color: #444; }
+.member-evaluation-section { margin-bottom: 25px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff; }
+.member-evaluation-section h5 { font-size: 1.2em; margin-bottom: 15px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.total-marks-display.member-total { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; font-weight: bold; }

@@ -1,0 +1,146 @@
+body {
+    padding:0;
+    height: 100%;
+    box-sizing:border-box;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.bg-image {
+    /* Background image */
+    background-image: url('/IMAGES/image_home.png');
+    /* filter: blur(2px); */
+    opacity: 50%;
+    width:100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color:white;
+}
+
+.header {
+position:fixed;
+top:0;
+left: 0;
+width:100%;
+display: flex;
+justify-content: space-between;
+align-items:center;
+z-index:100;
+gap:10px;
+padding: 20px, 100px;
+background-image: url('/IMAGES/image_home.png')no-repeat center/cover
+
+
+
+}
+
+.header .logo img {
+/* width: 150px; */
+margin-left: 0;
+margin-top: 0;
+}
+
+.nav-icons ul {
+/* list-style:none; */
+/* display: inline-block; */
+margin-right: 30px;
+margin-top: 1px;
+
+}
+
+
+
+
+.hero {
+background: url('/IMAGES/image_home.png')no-repeat center/cover;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+
+}
+
+.hero-content h1 {
+font-size: 3rem;
+margin-bottom: 1rem;
+}
+
+.hero-content p {
+font-size: 1.5rem;
+margin-bottom: 2rem;
+
+}
+
+.cta-button {
+  opacity: 80%;
+  width: 250px;
+  height: 40px;
+background-color: #212529;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 10px;
+font-size: 1rem;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+background-color: #555;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #343A40;
+    color: white;
+  }
+  
+  footer div {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  footer div:last-child {
+    margin-right: 0;
+  }
+  
+  footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .footer-left {
+     margin-left: 30px;
+  }
+  .footer-left p{
+    margin-left: 20px;
+    margin-top: -5px;
+  }
+  .footer-middle{
+    margin-left: 240px;
+  }
+  .footer-right{
+    margin-left: 150px;
+  }
+  footer ul {
+    list-style: none;
+  }
+  
+  footer ul li {
+    margin-bottom: 8px;
+  }
+  
+  footer ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  footer ul li a:hover {
+    text-decoration: underline;
+  }

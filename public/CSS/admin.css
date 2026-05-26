@@ -1,0 +1,350 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  top: 0;
+  /* width: 100%; */
+  padding: 15px;
+  background-color: #ADB5BD;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.search-bar-container {
+  position: relative;
+  margin-left: 45%;
+
+}
+
+#search-bar {
+  padding: 10px;
+  padding-left: 50px;
+  width: 300px;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  width: 350px;
+  height: 28px;
+}
+
+.dropdown-lines {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5px;
+  width: 45px;
+  height: 40px;
+  cursor:pointer; 
+}
+
+/* .dropdown-lines:hover {
+  
+  background-color: #ccc; 
+} */
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: none;
+  width: 200px;
+  margin-left: -50px;
+  margin-top: 10px;
+  z-index: 1;
+}
+.dropdown.visible {
+  display: block;
+}
+
+.dropdown li {
+  list-style-type: none; 
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.dropdown li:last-child {
+  margin-bottom: 0;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: #333;
+  margin: 10px 10px ;
+}
+
+.dropdown a:hover {
+  color: #666;
+}
+
+/* .dropdown-lines:hover + .dropdown {
+  display: block;
+}
+  */
+.close-btn {
+position: absolute;
+top: 1px;
+right: 10px;
+font-size: 20px;
+cursor: pointer;
+color: #999;
+}
+
+.close-btn:hover {
+color: #333;
+}
+.search-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.search-icon:hover{
+
+background-color: #ccc; /* grey background on hover */
+}
+.search-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-icons {
+  display:flex;
+  align-items: center;
+}
+
+.nav-icon {
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.nav-icon:hover {
+  opacity: 0.8;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #fff;
+  border-right: 2px solid #ddd;
+  padding: 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.dropdown-menu.open {
+  transform: translateX(0);
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  margin: 20px 0;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-menu a:hover {
+  color: #666;
+}
+
+.close-btn {
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.logo img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70vh;
+  background: url('/IMAGES/PG.png') no-repeat center center;
+  background-size: cover;
+  gap: 20px;
+}
+
+.info-box {
+  background-color: #495057;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  cursor: pointer; /* Ensure the cursor indicates clickability */
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70vh;
+  background: url('/IMAGES/PG.png') no-repeat center center;
+  background-size: cover;
+  gap: 20px;
+}
+
+#studentDetailsSection {
+  display: none; /* Initially hidden */
+  /* Add any additional styles needed for visibility */
+}
+
+/* .info-box img {
+  width: 60px;
+  margin-top: 10px;
+} */
+
+/* Evaluation Button */
+.evaluation-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.evaluation-button {
+  background-color: #e0e6ec;
+  margin-bottom: 40%;
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.evaluation-button:hover {
+  background-color: #dee2e6;
+}
+
+
+
+/*Table Section */
+.data-table {
+margin-bottom: 30%;
+  margin: 40px auto;
+  width: 80%;
+  text-align: left;
+}
+
+.data-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.data-table th {
+  background-color: #444;
+  color: white;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.btn-view {
+  padding: 5px 10px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+footer {
+display: flex;
+justify-content: space-between;
+padding: 20px;
+background-color: #343A40;
+color: white;
+}
+
+footer div {
+flex: 1;
+margin-right: 20px;
+}
+
+footer div:last-child {
+margin-right: 0;
+}
+
+footer h3 {
+font-size: 18px;
+margin-bottom: 10px;
+}
+.footer-left {
+ margin-left: 30px;
+}
+.footer-left p{
+margin-left: 20px;
+margin-top: -5px;
+}
+.footer-middle{
+margin-left: 240px;
+}
+.footer-right{
+margin-left: 150px;
+}
+footer ul {
+list-style: none;
+}
+
+footer ul li {
+margin-bottom: 8px;
+}
+
+footer ul li a {
+color: white;
+text-decoration: none;
+}
+
+footer ul li a:hover {
+text-decoration: underline;
+}

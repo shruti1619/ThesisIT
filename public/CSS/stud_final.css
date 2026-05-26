@@ -1,0 +1,707 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    /* line-height: 1.6; */
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  /* Header section with background and alignment */
+  .header {
+    background-image: url('/IMAGES/FYBACKGROUND_IMAGE.png');
+    background-size: cover;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    padding-top: 10px;
+  }
+  
+  /* Heading position and styling */
+  #heading {
+    position: absolute;
+    top: 80px; /* Adjust this value to control the vertical space of heading */
+    margin-bottom: 20px;
+    margin-left: 650px;
+    justify-content: center;
+    align-items: center;
+    /* padding-bottom: 10px; */
+  }
+  
+  /* Header content positioning */
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 100%;
+    text-align: center;
+  }
+  .header-content h1 {
+    font-size: 25px;
+    color: #fff;
+    
+    margin-left: 50px;
+  }
+  
+  
+  /* Logo size */
+  .logo {
+    width: 100px;
+    height: 40px;
+    height: 60px;
+    width: 180px;
+  }
+  
+  /* Icons section on the header */
+  .icons {
+    display: flex;
+    gap: 15px;
+    margin-right: 10px;
+  }
+  
+  /* Icons styling */
+  .icons i {
+    font-size: 20px;
+    color: #000000;
+  }
+  
+  /* Search Bar positioning below the header */
+  .search-bar-container {
+    display:flex;
+    position: relative;
+    margin-top: 20px; /* Pulling search bar closer to the heading */
+    margin-bottom: 100px;
+    justify-content: center;
+  
+  }
+  
+  .search-bar-wrapper {
+    display:flex;
+    align-items: center;
+    position: relative; /* This will help position the icons within the wrapper */
+    width: 400px; /* Adjust as needed */
+    
+  }
+  
+  
+  /* Search input field styling */
+  #search-bar {
+    padding: 10px;
+    padding-left: 50px;
+    width: 400px; /* Adjust the width of the search bar */
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+  }
+  
+  /* Dropdown icon inside search bar */
+  .dropdown-lines {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 55px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+  }
+  
+  /* Dropdown hover */
+  /* .dropdown-lines:hover {
+    background-color: #ccc;
+  } */
+  
+  /* Dropdown menu styling */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: none;
+    width: 200px;
+    margin-left: -50px;
+    margin-top: 10px;
+    z-index: 1;
+  }
+  
+  /* Dropdown menu items */
+  .dropdown-menu li {
+    list-style-type: none;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+  
+  .dropdown-menu li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .dropdown-menu a {
+    text-decoration: none;
+    color: #333;
+    margin: 10px 10px;
+  }
+  
+  .dropdown-menu a:hover {
+    color: #666;
+  }
+  
+  /* Dropdown hover effect */
+  .dropdown-lines:hover + .dropdown-menu {
+    display: block;
+  }
+  
+  /* Close button for modal */
+  .close-btn {
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+  }
+  
+  .close-btn:hover {
+    color: #333;
+  }
+  
+  /* Search icon styling */
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 55px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  /* .search-icon:hover {
+    background-color: #ccc; /* Grey background on hover */
+  
+  
+  .search-icon img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Top navigation */
+  .top-nav {
+    background-color: #f5f5f5;
+    padding: 10px;
+  }
+  
+  /* Top navigation list */
+  .top-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  /* Top navigation links */
+  .top-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  .top-nav ul li i {
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+    margin-left:5px;
+  
+  }
+  
+  
+  
+  /* Sub navigation */
+  .sub-nav {
+    background-color: #d3d3d3;
+    padding: 10px;
+  }
+  
+  /* Sub navigation list */
+  .sub-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  /* Sub navigation links */
+  .sub-nav ul li {
+    display:inline-block;
+    position: relative;
+    /* padding:10px 20px; */
+  }
+  
+  .sub-nav ul li:not(:last-child)::after {
+    content: '';
+    height: 40.8px; /* Adjust height as needed */
+    width: 1px;
+    background-color: #000000; /* Line color */
+    position: absolute;
+    margin-left: 300px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .sub-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  /* Dropdown content */
+  .dropdown-content {
+    margin-top: 13px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #CED4DA;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    width: 200px;
+    text-align: center;
+  }
+  
+  /* Dropdown button styling */
+  .dropdown-content button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    width: 150px;
+    height:30px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin: 5px 0;
+  }
+  
+  .dropdown-content button:hover {
+    background-color: #555;
+  }
+  
+  /* Show dropdown on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Main content */
+  main {
+    text-align: left; /* Change text alignment if needed, or remove for default */
+    padding: 20px; /* Add some padding around the main content area */
+    min-height: calc(100vh - 300px - 40px - 40px - 100px); /* Example: Calculate min-height to push footer down (adjust values based on header, navs, footer heights) */
+  }
+  
+  /* Footer section */
+  .footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* Footer logo section */
+  .footer-left {
+    margin-left: 30px;
+ }
+ .footer-left p{
+   margin-left: 20px;
+ }
+ 
+  .footer-logo img {
+    width: 100px;
+    height:40px;
+    height: 60px;
+    width: 180px;
+  }
+  
+  /* Footer links */
+  .footer-links, .footer-contact {
+    text-align: left;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+  }
+  
+  .footer-links ul li {
+    margin: 10px 0;
+  }
+ 
+  .footer-links ul li a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Footer contact section */
+  .footer-contact p {
+    margin-top: 10px;
+    margin-right: 50px;
+  }
+  
+  /* Container styling */
+  .container {
+    width: 100%;
+    margin: 0;
+    background-color: #F8F9FA;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styling */
+  h2 {
+    text-align: center;
+    background-color: #ADB5BD;
+    color: #000000;
+    padding: 10px;
+  }
+  
+  /* Subheading styling */
+  .subheading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 40px;
+    width: 316px;
+    background-color: #DEE2E6;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Section styling */
+  .section {
+    margin: 20px 0;
+  }
+  
+  .section h3 {
+    margin: 10px 50px 0px 50px;
+  }
+  
+  /* Label styling */
+  label {
+    display: block;
+    margin: 5px 50px 2px 50px;
+  }
+  
+  /* Input field styling */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: calc(100% - 100px); /* Full width minus margins */
+    padding: 8px;
+    margin: 5px 50px 10px 50px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Members container styling */
+  .members-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px;
+  }
+  
+  /* Individual member styling */
+  .member {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+  }
+  
+  .member label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .member input {
+    width: calc(100% - 100px); /* Full width minus margins */
+    padding: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Submit button styling */
+  .submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 309px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto; /* Center horizontally and add margin */
+  }
+  
+  .submit-btn:hover {
+    background-color: #555;
+  }
+  
+  /* Styling for the Team Information Section */
+  .team-info-section {
+      background-color: #f9f9f9; /* Light background for the section */
+      border: 1px solid #ddd;     /* Subtle border */
+      border-radius: 8px;         /* Rounded corners */
+      padding: 20px;              /* Inner spacing */
+      margin: 20px auto;          /* Centering and spacing from other elements */
+      max-width: 800px;           /* Limit width for better readability */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .team-info-section h2 {
+      color: #333;                /* Darker heading color */
+      margin-bottom: 15px;        /* Space below the main heading */
+      border-bottom: 2px solid #eee; /* Separator line */
+      padding-bottom: 10px;       /* Space above the line */
+      text-align: center;         /* Center the main heading */
+  }
+  
+  .team-info-section h3 {
+      color: #555;                /* Slightly lighter heading color */
+      margin-top: 20px;           /* Space above the members heading */
+      margin-bottom: 10px;        /* Space below the members heading */
+  }
+  
+  .team-info-section p {
+      color: #444;                /* Text color */
+      line-height: 1.6;           /* Improve readability */
+      margin-bottom: 8px;         /* Space between paragraphs */
+  }
+  
+  .team-info-section p strong {
+      color: #0056b3;             /* Highlight the labels (like Team Name:) */
+      margin-right: 5px;          /* Space after the label */
+  }
+  
+  .team-info-section ul {
+      list-style: none;           /* Remove default bullet points */
+      padding-left: 0;            /* Remove default padding */
+      margin-top: 0;
+  }
+  
+  .team-info-section li {
+      background-color: #fff;     /* White background for each member */
+      border: 1px solid #eee;     /* Light border for list items */
+      border-radius: 4px;         /* Slightly rounded corners */
+      padding: 10px 15px;         /* Spacing inside list items */
+      margin-bottom: 8px;         /* Space between list items */
+      color: #333;
+  }
+  
+  .team-info-section li:last-child {
+      margin-bottom: 0;           /* No bottom margin for the last item */
+  }
+  
+  /* Style the container for the leader buttons if needed */
+  .team-info-section div[style*="margin-top: 15px;"] {
+      margin-top: 25px !important; /* Add more space above the buttons */
+      padding-top: 15px;
+      border-top: 1px solid #eee; /* Separator line above buttons */
+      text-align: center; /* Center the buttons */
+  }
+  
+  /* You might already have button styles, but you can refine them here */
+  .team-info-section button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px; /* Add some space around buttons */
+      transition: background-color 0.3s ease;
+  }
+  
+  .team-info-section button:hover {
+      background-color: #0056b3;
+  }
+  
+  /* Specific style for the disband button if desired */
+  .team-info-section button[onclick*="confirmDisbandTeam"] {
+      background-color: #dc3545; /* Red color for potentially destructive action */
+  }
+  
+  .team-info-section button[onclick*="confirmDisbandTeam"]:hover {
+      background-color: #c82333;
+  }
+  
+  /* Style for the 'not in a team' message */
+  .team-info-section p:only-child { /* If the only element is the 'not in a team' paragraph */
+      text-align: center;
+      font-style: italic;
+      color: #777;
+  }
+
+.team-project-section {
+  background: #f6f6f6;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(120,120,120,0.10);
+  padding: 36px 38px 28px 38px;
+  margin: 40px auto 32px auto;
+  max-width: 700px;
+  border: 1.5px solid #b0b0b0;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+/* Change from h2 to h3 and reduce font size */
+.team-project-section h3 {
+  color: #000000;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.3em;
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  background: #b0b0b0;
+  border-radius: 8px;
+  padding: 12px 0;
+  border-bottom: 2px solid #888;
+}
+
+.team-details, .team-members, .submitted-project-info {
+  margin-bottom: 22px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(120,120,120,0.06);
+  padding: 18px 22px 12px 22px;
+  border: 1px solid #d3d3d3;
+}
+
+.team-details p, .submitted-project-info p {
+  font-size: 1.08em;
+  color: #222;
+  margin-bottom: 8px;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.team-details p strong,
+.submitted-project-info p strong {
+  color: #388e3c;
+}
+
+.team-members h3, .submitted-project-info h3 {
+  color: #000000;
+  font-size: 1.15em;
+  margin-bottom: 10px;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+#team-member-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+
+.member-item {
+  margin-bottom: 7px;
+  font-size: 1em;
+  color: #333;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background: #ededed;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d3d3d3;
+}
+
+.member-item:last-child {
+  margin-bottom: 0;
+}
+
+.remove-member-control {
+  margin-left: 18px;
+  color: #d32f2f;
+  font-size: 0.98em;
+}
+
+.team-edit-buttons {
+  margin-top: 18px !important;
+  padding-top: 12px;
+  border-top: 1px solid #d3d3d3;
+  text-align: center;
+}
+
+.team-edit-buttons button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px 8px;
+  font-size: 1em;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  transition: background-color 0.2s;
+}
+
+.team-edit-buttons button:hover {
+  background-color: #388e3c;
+}
+
+.team-edit-buttons #disband-team-btn {
+  background-color: #d32f2f;
+}
+
+.team-edit-buttons #disband-team-btn:hover {
+  background-color: #b71c1c;
+}
+
+#new-members-section input[type="text"] {
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 1em;
+  width: 100%;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+}
+
+.btn-view-project {
+  display: inline-block;
+  background: #4CAF50;
+  color: #fff;
+  padding: 10px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(120,120,120,0.08);
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.btn-view-project:hover {
+  background: #388e3c;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(120,120,120,0.13);
+}
+
+.feedback-section {
+  width: 700px;            /* Make both same width */
+  margin: 0 auto;        /* Center align */
+  background-color: #f9f9f9;
+  border:1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional, for consistent look */
+  border-radius: 10px;
+}

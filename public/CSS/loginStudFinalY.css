@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    
+
+    background-color: #fff;
+    
+}
+
+.header {
+    
+        display: flex;
+        flex-direction:row;
+        justify-content:space-between;
+        padding: 5px;
+       
+        align-items:center;
+
+}
+
+.header .logo img {
+    /* height:40px;
+    width: 150px; */
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.sign-in-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+
+    height: 70vh;
+}
+
+.sign-in-section h2 {
+    height: 20vh;
+    font-size: 28px;
+    justify-content: center;
+    text-align: center;
+    color: #333;
+    
+}
+
+.sign-in-form {
+    width: 300px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+.form-links {
+    display: flex;
+    text-align:center;
+    margin-bottom: 15px;
+}
+
+.form-links a {
+    text-decoration: none;
+    color:#3B4B54;
+    font-size: 0.9rem;
+}
+.textbox {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.textbox input {
+    
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.toggle-password{
+    width:40px;
+    height:5vh;
+    
+    position: absolute;
+    top:60%;
+    right: 10px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+
+
+.login-btn {
+    width:300px;
+    padding:10px;
+    background-color: #333;
+    color:white;
+    border:1px solid#333;
+     font-size: 1rem;
+     border-radius: 5px;
+     margin-bottom:5px;
+    cursor: pointer;
+
+    
+}
+.login-btn a{
+  text-decoration: none;
+  color: white;
+}
+
+
+.login-btn:hover {
+    background-color: #3333;
+}
+
+.create-account {
+    margin-top: 15px;
+    text-align: center;
+    
+}
+
+.create-account a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #000000;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #343A40;
+    color: white;
+  }
+  
+  footer div {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  footer div:last-child {
+    margin-right: 0;
+  }
+  
+  footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .footer-left {
+     margin-left: 30px;
+  }
+  .footer-left p{
+    margin-left: 20px;
+    margin-top: -5px;
+  }
+  .footer-middle{
+    margin-left: 240px;
+  }
+  .footer-right{
+    margin-left: 150px;
+  }
+  footer ul {
+    list-style: none;
+  }
+  
+  footer ul li {
+    margin-bottom: 8px;
+  }
+  
+  footer ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  footer ul li a:hover {
+    text-decoration: underline;
+  }

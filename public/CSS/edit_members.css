@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    /* line-height: 1.6; */
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+/* Container styling */
+.container {
+    width: 100%;
+    margin: 0;
+    background-color: #F8F9FA;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styling */
+header h2 {
+    text-align: center;
+    background-color: #ADB5BD;
+    color: #000000;
+    padding: 10px;
+}
+
+/* Subheading styling */
+.subheading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 40px;
+    width: 316px;
+    background-color: #DEE2E6;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Section styling */
+.section {
+    margin: 20px 0;
+}
+
+.section h3 {
+    margin: 10px 50px 0px 50px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    margin: 5px 50px 2px 50px;
+}
+
+/* Input field styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: calc(100% - 100px); /* Full width minus margins */
+    padding: 8px;
+    margin: 5px 50px 10px 50px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Members container styling */
+.members-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px;
+}
+
+/* Individual member styling */
+.member {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.member label {
+    display: block;
+    margin-top: 10px;
+}
+
+.member input {
+    width: calc(100% - 100px); /* Full width minus margins */
+    padding: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+/* Submit button styling */
+.submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 309px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto; /* Center horizontally and add margin */
+}
+
+.submit-btn:hover {
+    background-color: #555;
+}

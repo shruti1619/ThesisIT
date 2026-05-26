@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    height:100%;
+}
+
+.header {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: #f4f4f4;
+    align-items:center;
+    
+   
+}
+
+
+.header.logo img {
+    width: 50px;
+}
+
+.nav-icon {
+  /* list-style: none; */
+  /* display: inline-block; */
+  margin-right: 20px;
+  margin-top: -20px;
+  
+  }
+
+.sign-in-section {
+    margin: -20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.sign-in-section h2 {
+    height:20vh;
+    font-size: 2rem;
+    margin-bottom: -50px;
+    color: #333;
+}
+
+.sign-in-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.sign-in-section a{
+  text-decoration: none;
+}
+.sign-in-button {
+    background-color: #555;
+    color: #fff;
+    padding: 15px 30px;
+    width: 400px;
+    top: 403px;
+    left: 506px;
+    gap: 20px;
+    border-radius: 10px 10px 10px 10px;
+    opacity: 0px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 400px;
+   
+    
+  
+}
+
+
+.sign-in-button img {
+    width: 25px;
+    margin-right: 80px;
+}
+
+.sign-in-button:hover {
+    background-color: #333;
+}
+  
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 51%;
+    right: 0;
+    margin-right: 350px;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 1px solid #ccc;
+}
+
+.btn-option {
+
+    padding: 10px;
+    margin: 12px;
+    border-radius: 25px;
+    border: none;
+    background-color: #333;
+    color: white;
+}
+
+.btn-option:hover {
+    background-color: #495057;
+}
+
+.closebtn {
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+}
+
+.closebtn:hover {
+    color: #333;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #343A40;
+    color: white;
+  }
+  
+  footer div {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  footer div:last-child {
+    margin-right: 0;
+  }
+  
+  footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .footer-left {
+     margin-left: 30px;
+  }
+  .footer-left p{
+    margin-left: 20px;
+    margin-top: -5px;
+  }
+  .footer-middle{
+    margin-left: 240px;
+  }
+  .footer-right{
+    margin-left: 150px;
+  }
+  footer ul {
+    list-style: none;
+  }
+  
+  footer ul li {
+    margin-bottom: 8px;
+  }
+  
+  footer ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  footer ul li a:hover {
+    text-decoration: underline;
+  }

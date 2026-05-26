@@ -1,0 +1,119 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ADB5BD;
+    padding: 10px 20px;
+    height:50px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    height: 60px;
+}
+
+.navbar-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.logout-icon {
+    text-decoration: none;
+}
+
+/* Centered Profile Container */
+.profile-pic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.profile-pic-label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10%;
+    border: 2px solid #ccc;
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+.profile-pic-container h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Form Styling */
+form {
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fdfdfd;
+}
+
+input[readonly] {
+    background-color: #f0f0f0;
+}
+
+/* Submit Button */
+.submit-btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: green;
+}

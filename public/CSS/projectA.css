@@ -1,0 +1,151 @@
+* {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  header {
+    background-color: #adb5bd;
+    padding: 10px;
+    /* text-align: center; */
+  }
+  header h1 {
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+  
+  body {
+   
+    background-color: #f4f4f4;
+    
+    width:100%;
+  }
+  .container{
+    
+  display:flex;
+  
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  height:100%;
+  background-color: white;
+  padding: 70px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
+  
+  
+  border-radius: 10px;
+  width: 100%;
+   
+   
+  }
+  .container h1 {
+    top:0;
+    background-color: #bfbfbf;
+    border:25px;
+    
+    padding:5px;
+  
+    color: #000;
+  }
+  
+  
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .form-class{
+    margin-bottom:5px;
+  }
+  .form-class label{
+    display:block;
+   
+  margin-bottom:5px;
+  }
+  .form-class input{
+    width:100%;
+    padding:10px;
+    
+    border-radius:5px;
+  }
+  .form-group {
+  margin-bottom:15px;
+  }
+  
+  .form-group label {
+    display: block;
+    
+   margin-bottom:5px;
+  }
+  
+  
+  .form-group input {
+    width: 50%;
+    padding: 10px;
+   
+    border-radius: 5px;
+  }
+  
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    
+  }
+  
+  .team-member {
+   flex:1 1 45%; 
+  margin-bottom:5px;
+  }
+  .team-member label{
+    
+   margin-bottom:5px;
+    display: block;
+    
+  }
+  
+  .team-member input {
+    width: 70%;
+    padding: 10px;
+    
+    border-radius: 5px;
+    margin-bottom:20px;
+  }
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #495057;
+  color: white;
+    cursor: pointer;
+    height:45px;
+    margin-bottom:20px;
+    justify-content:center;
+}
+
+button#closeButton {
+    background-color: #212529;
+    display: block;
+    
+    align-items:center;
+    text-align:center;
+    margin-right: 40px;
+  
+}
+
+button#closeButton:hover {
+    background-color: #adb5bd;
+}

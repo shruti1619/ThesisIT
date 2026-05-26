@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F8F9FA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    padding: 10px;
+    margin-top: -120px;
+    /* background-color: #ffffff; */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.logo {
+    height: 70px;
+    width: 190px;
+    margin-right: 10px;
+    margin-top: 80px;
+}
+
+
+.forgot-password-container {
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 40px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 400px;
+}
+
+h2 {
+    margin-bottom: 50px;
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 100px);
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+input[type="email"]:invalid {
+    border-color: black;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #343A40;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+button#submit-button {
+    width: 380px;
+    margin-top: 15px;
+    margin-left: -10px;
+    
+}
+
+button:hover {
+    background-color: #343A40;
+}

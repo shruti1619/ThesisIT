@@ -1,0 +1,236 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+background-color: #ADB5BD;
+display: flex;
+justify-content: center; /* Centers the header content (h1) */
+align-items: center;
+position: relative; /* Allows positioning of logo separately */
+padding: 20px;
+}
+
+.logo {
+height: 70px;
+width: 170px;
+margin-left: -20px;
+position: absolute;
+left: 20px; /* Keeps the logo in the left corner */
+top: 50%;
+transform: translateY(-50%); /* Vertically centers the logo */
+
+} 
+
+
+header h1 {
+font-size: 24px;
+margin: 0;
+text-align: center;
+flex-grow: 1; /* Ensures the h1 text takes up remaining space */
+}
+
+.faq-section{
+  padding: 30px;
+  justify-content: center;
+  border:3px;
+  border-radius:5px;
+ background-color:white;
+ 
+}
+.faq-section h2{
+  font-size: 20px;
+  width: 316px;
+  height: 35px;
+  text-align:center;
+  align-items: center;
+  padding: 5px;
+  border:5px;
+  border-radius:5px;
+  font-weight: 100;
+  background-color:#DEE2E6;
+  margin: 0 auto;
+}
+.qa-section {
+  max-width: 898px;
+  margin: 50px auto;
+ 
+  /* background-color: #DEE2E6; */
+/*     
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+  border-radius: 5px;
+  overflow: hidden;
+  
+  
+}
+.qa-item {
+  border-bottom: 1px solid #f4f4f4;
+  padding: 10px;
+ 
+  font-size: 18px;
+  }
+
+.qa-item:last-child {
+  border-bottom: none;
+  
+}
+.question {
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-bottom:white;
+  background-color: #E9ECEF;
+  display: flex;
+ 
+  transition: background-color 0.3s ease;
+  position:relative;
+}
+
+
+.question:hover {
+  background-color: #f1f1f1;
+  
+}
+
+
+.symbol {
+  position:absolute;
+  right:30px;
+  font-size: 24px;
+  color:black;
+  transition: transform 0.3s ease;
+  margin-left:10px;
+  justify-content:space-between;
+ 
+}
+
+
+.answer {
+  padding: 15px;
+  display: none;
+  font-size: 16px;
+  background-color: #f1f1f1;
+}
+
+.question.active .symbol {
+  transform: rotate(180deg); /* Turns + into - */
+}
+  
+ .contact-section {
+    text-align: center;
+    width: 1565px;
+    margin-top: 30px;
+    background-color: #E9ECEF;
+    height: 190px;
+    margin-left: -80px;
+    
+   
+    
+} 
+
+.contact-section h3{
+  margin-top: 80px;
+  padding: 20px 0px 10px;
+
+}
+.contact-btn {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.contact-btn:hover{
+  background-color: black;
+  color: white;
+}  
+/*footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding:0;
+    
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-contact {
+    text-align: right;
+} */
+ footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #343A40;
+  color: white;
+  margin-top: -30px;
+}
+
+footer div {
+  flex: 1;
+  margin-right: 20px;
+}
+
+
+footer div:last-child {
+  margin-right: 0;
+}
+
+footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  
+}
+.footer-left {
+margin-left: 30px;
+}
+.footer-left p{
+margin-left: 20px;
+margin-top: 1px;
+}
+.footer-middle{
+margin-left: 240px;
+}
+.footer-right{
+margin-left: 150px;
+}
+.footer-right p{
+margin-left: -10px;
+}
+footer ul {
+  list-style: none;
+}
+
+footer ul li {
+  margin-bottom: 8px;
+}
+
+footer ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+footer ul li a:hover {
+  text-decoration: underline;
+}
