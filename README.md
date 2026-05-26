@@ -147,14 +147,6 @@ Open your browser and go to: `http://localhost:3000`
 
 ## Screenshots
 
-> Add screenshots here after capturing them from your running app.
-
-**How to add screenshots:**
-1. Take screenshots of your running app (use Windows Snipping Tool or `Ctrl + Shift + S`)
-2. Create a folder called `screenshots/` in your repo
-3. Upload your images there
-4. Replace the placeholder links below with actual paths
-
 ```
 screenshots/
 ├── home.png
@@ -171,6 +163,7 @@ screenshots/
 | Guide Evaluation Panel | ![Evaluation](screenshots/guide-evaluation.png) |
 | Project Hub | ![Hub](screenshots/project-hub.png) |
 | Admin Panel | ![Admin](screenshots/admin-panel.png) |
+| Evaluation Page | ![Evaluation](screenshots/evaluation.png) |
 
 ---
 
