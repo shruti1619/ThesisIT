@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Details</title>
+    <link rel="stylesheet" href="/CSS/alumniDetails.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Alumni Details</h1>
+        <div class="group-info">
+            <h2>Group: <%= group.groupName %></h2>
+            <!-- <h3>Leader: <%= group.leader.name %></h3> Display the leader's name -->
+            <ul class="members-list">
+                <% members.forEach(member => { %>
+                    <li class="member-card">
+                        <img src="<%= member.profileImagePath ? member.profileImagePath : '/IMAGES/default-profile.png' %>" alt="Profile Image" class="profile-img">
+                        <div class="member-info">
+                            <h3><%= member.name %></h3>
+                            <p>Email: <%= member.email %></p>
+                            <% if (member._id.equals(group.leader._id)) { %>
+                                <p class="role">Role: Leader</p>
+                            <% } else { %>
+                                <p class="role">Role: Member</p>
+                            <% } %>
+                            <!-- Add contribution field -->
+                            <% const contribution = group.contributions.find(c => c.memberId.equals(member._id)); %>
+                            <p>Contribution: <%= contribution ? contribution.contribution : 'No contribution specified' %></p>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

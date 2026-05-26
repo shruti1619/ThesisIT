@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ThesisIT</title>
+    <link rel="stylesheet" href="/CSS/signupStud_FinalY.css">
+</head>
+<body>
+    <!-- Logo and Navigation -->
+    <header>
+        <a href="/Welcome">
+            <img src="/IMAGES/logo.png" alt="ThesisIT Logo" class="logo">
+        </a>
+    </header>
+
+    <!-- Sign Up Form -->
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        
+    <form action="/student/register" method="POST" onsubmit="return validateForm()">
+        <label for="name">Enter your name</label>
+        <input type="text" id="name" name="name" placeholder="enter your fullname" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="email id" required>
+
+        <label for="prn">PRN</label>
+        <input type="text" id="prn" name="prn" placeholder="your PRN" required>
+        
+        <label for="rollNumber">Roll Number</label>
+        <input type="text" id="rollNo" name="rollNo" placeholder="your roll number" required>
+       
+        <label for="year">Year</label>
+        <select id="year" name="year" required>
+            <option value="" disabled selected>Select Year</option>
+            <option value="first">First Year</option>
+            <option value="second">Second Year</option>
+            <option value="third">Third Year</option>
+            <option value="final">Final Year</option>
+        </select>
+
+        <label for="academicYear">Academic Year</label>
+    <input type="text" id="academicYear" name="academicYear" placeholder="e.g., 2023-24" required pattern="\d{4}-\d{2}" title="Please enter in format: YYYY-YY">
+
+        <label for="mobile">Mobile No.</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="Your mobile no." maxlength="10" minlength="10" required onkeypress="restrictInput(event)">
+       
+        <label for="username">Enter username</label>
+        <input type="text" id="username" name="username" placeholder="enter your desired username" required>
+
+        <label for="password">Set password</label>
+        <input type="password" id="password" name="password" placeholder="password" required>
+
+        <label for="confirm_password">Confirm password</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="password" required>
+
+        <button type="submit"> Create Account </button>
+    </form>
+    <p>Already have an account? <a href="/student/signin">Sign In</a></p>
+</div>
+
+
+            <!-- Footer Section -->
+            <footer>
+                <div class="footer-left">
+                    <div class="logo"> 
+                        <img src="/IMAGES/white logo.png" alt="Thessit Logo">
+                    </div>
+                    <p>"Your Academic Projects, Our Priority"</p>
+                </div>
+        
+                <div class="footer-middle">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li><a href="/Welcome">Home</a></li>
+                        <li><a href="/api/aboutus">About Us</a></li>
+                        <li><a href="/api/contact">Contact Us</a></li>
+                        <li><a href="/api/homefaq">FAQs</a></li>
+                        <li><a href="/api/option">Register</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-right">
+                    <h3>GET IN TOUCH</h3>
+                    <p>Email: thessisit@gmail.com</p>
+                </div>
+            </footer>
+            <script src="/JS/signupStud_FinalY.js"></script>
+        </body>
+        </html>

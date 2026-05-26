@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/CSS/contact.css">
+</head>
+<body>
+    <header>
+        <div class="logo"> 
+           <a href="/Welcome"> <img src="/IMAGES/logo.png" alt="Thessit Logo"></a>
+        </div>
+        <h1>CONTACT US</h1>
+    </header>
+
+    <section class="contact-section">
+        <h2>GET IN TOUCH</h2>
+        <p>"Have Questions? We're Here to Help!"</p>
+
+        <form id="contact-form">
+            <label for="name">Enter your name</label>
+            <input type="text" id="name" placeholder="Full name" required>
+
+            <label for="phone">Enter your phone number</label>
+            <input type="tel" id="phone" placeholder="Mobile number" required>
+
+            <label for="email">Enter your email</label>
+            <input type="email" id="email" placeholder="Email ID" required>
+
+            <label for="subject">Enter subject</label>
+            <input type="text" id="subject" placeholder="Subject of query" required>
+
+            <label for="message">Enter your message</label>
+            <textarea id="message" placeholder="Message" rows="5" required></textarea>
+
+            <button type="submit" id="send-message">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-left">
+            <div class="logo"> 
+                <img src="/IMAGES/white logo.png" alt="Thessit Logo">
+            </div>
+            <p>"Your Academic Projects, Our Priority"</p>
+        </div>
+
+        <div class="footer-middle">
+            <h3>QUICK LINKS</h3>
+            <ul>
+                <li><a href="/Welcome">Home</a></li>
+                <li><a href="/api/aboutus">About Us</a></li>
+                <li><a href="/api/contact">Contact Us</a></li>
+                <li><a href="/api/homefaq">FAQs</a></li>
+                <li><a href="/api/option">Register</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-right">
+            <h3>GET IN TOUCH</h3>
+            <p>Email: thessisit@gmail.com</p>
+        </div>
+    </footer>
+    <script src="/JS/contact.js"></script>
+</body>
+</html>

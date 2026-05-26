@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Hub</title>
+    <link rel="stylesheet" href="/CSS/projecthub.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Project Hub</h1>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr. no</th>
+                        <th>Project Title</th>
+                        <th>Year</th>
+                        <th>Academic Year</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% projects.forEach((project, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %>.</td>
+                        <td><%= project.projectTitle %></td>
+                        <td><%= project.year %></td> <%# Display final/third %>
+                        <td><%= project.academicYear %></td> <%# Display the academic year %>
+                        <!-- End Edit -->
+                        <td><button class="view-button" data-id="<%= project._id %>">View</button></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+    <script src="/JS/projecthub.js"></script>
+</body>
+</html>

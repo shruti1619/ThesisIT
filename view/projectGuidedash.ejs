@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Guides Dashboard</title>
+    <link rel="stylesheet" href="/CSS/projectGuid.css">
+</head>
+<body>
+
+    <header>
+        <div class="header1">
+        <a href="index.html">
+            <img src="/IMAGES/white logo.png" alt="ThesisIT Logo" class="logo">
+        </a>
+        <div class="icons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-bell" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+          </svg>
+          <a href="/guide/profile"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-person-square" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+          </svg></a>
+          <a href="/guide/logout" class="logout-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg>
+        </a>
+        </div>
+        </div> 
+    <div class="one">
+        <div class="header-title">
+          <h1>Project Guides Dashboard</h1>
+        </div>
+         <div class="search-bar-container">
+          <input type="text" placeholder="Search Here" id="search-bar">
+          <img src="/IMAGES/3 line.png" class="dropdown-lines" alt="Dropdown Lines">
+         
+          <!-- === Modified Dropdown Menu === -->
+      <ul class="dropdown-menu">
+        <span class="close-btn">&times;</span>
+        <% if (typeof projectDomains !== 'undefined' && projectDomains.length > 0) { %>
+          <% projectDomains.forEach(domain => { %>
+            <% const encodedDomain = encodeURIComponent(domain); %>
+            <%# Prepend /student/ to the href %>
+            <li><a href="/student/projects/domain/<%= encodedDomain %>"><%= domain %></a></li>
+          <% }); %>
+        <% } else { %>
+          <li><a href="#">No domains found</a></li>
+        <% } %>
+      </ul>
+      <!-- === End Modified Dropdown Menu === -->
+          <img src="/IMAGES/search bar.png" class="search-icon" alt="Search Icon">
+        </div>
+    </div> 
+    
+      </header>
+        <nav>
+            <ul>
+                <li><a href="/projecthub/">Project Hub <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" fill="white" class="Arrow" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                  </svg></a> </li>
+            
+                <li><a href="/projectref/">Project Refinery <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" fill="white" class="Arrow" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                  </svg></a></li>
+               
+            </ul>
+        </nav><br>
+
+    <section>
+       
+
+     <!-- Main Section: Project Evaluation -->
+   <section class="evaluation">
+        <h2>Projects Under Guidance</h2> 
+        <!-- Table for listing projects -->
+        <table id="projects-table">
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Team Name</th>
+                    <th>Project Title</th>
+                    <th>Project Members</th>
+                    <th>Project Status</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let srNo = 1; %>
+                <% projects.forEach(project => { %>
+                <tr>
+                    <td><%= srNo++ %></td>
+                    <td><%= project.groupId.groupName %></td>
+                    <td><%= project.projectTitle %></td>
+                    <td>
+                        <% project.groupId.members.forEach(member => { %>
+                            <%= member.name %> <br>
+                        <% }) %>
+                    </td>
+                    <td><a href="/guide/view/<%= project.groupId._id %>"><span class="status-new">View</span></a></td>
+                    <td><%= project.groupId.year %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+
+
+    
+            <!-- Footer Section -->
+            <footer>
+                <div class="footer-left">
+                    <div class="logo"> 
+                        <img src="/IMAGES/white logo.png" alt="Thessit Logo">
+                    </div>
+                    <p>"Your Academic Projects, Our Priority"</p>
+                </div>
+        
+                <div class="footer-middle">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="homeFAQ.html">FAQs</a></li>
+                        <li><a href="signin.html">Register</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-right">
+                    <h3>GET IN TOUCH</h3>
+                    <p>Email: thessisit@gmail.com</p>
+                </div>
+            </footer>
+        
+        
+
+    <script src="/JS/projectGuide.js"></script>
+</body>
+</html>

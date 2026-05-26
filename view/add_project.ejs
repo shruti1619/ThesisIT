@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Management</title>
+  <link rel="stylesheet" href="/CSS/add_project.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+  <!-- Helper function to display filename -->
+  <%
+    const getFilename = (filePath) => {
+      if (!filePath) return '';
+      // Attempt to extract original filename after the last timestamp-like part
+      try {
+        const parts = filePath.split(/[\\/]/).pop().split('-');
+        // Find the index of the part that looks like a timestamp (long number)
+        let tsIndex = -1;
+        for (let i = parts.length - 1; i >= 0; i--) {
+          if (/^\d{10,}$/.test(parts[i])) { // Check if it's a long number (like Date.now())
+            tsIndex = i;
+            break;
+          }
+        }
+        if (tsIndex !== -1 && tsIndex < parts.length - 1) {
+          return parts.slice(tsIndex + 1).join('-'); // Join parts after timestamp
+        }
+        // Fallback: Join parts after the typical prefix (group-id-fieldname-)
+        return parts.slice(3).join('-');
+      } catch (e) {
+        return filePath.split(/[\\/]/).pop(); // Basic fallback
+      }
+    };
+  %>
+</head>
+<body>
+  <nav class="navbar">
+    <!-- Ensure group object with groupName is passed from the route -->
+    <h2>Project Management - <%= group ? group.groupName : 'Group' %> (<%= studentYear %>)</h2>
+  </nav>
+  <section>
+    <div class="container">
+      <!-- Display messages -->
+      <% if (messages.error) { %><div class="alert alert-danger"><%= messages.error %></div><% } %>
+      <% if (messages.success) { %><div class="alert alert-success"><%= messages.success %></div><% } %>
+
+      <% const currentStage = project ? project.submissionStage : 0; %>
+      <% const nextStage = currentStage + 1; %>
+      <% const isComplete = currentStage >= maxStages; %>
+      <%# Determine if the current user is the leader %>
+      <%# Ensure isLeader boolean is passed from the route %>
+      <% const leaderCanEdit = isLeader && !isComplete; %>
+
+      <form id="project-form" method="POST" action="/project/submit-stage" enctype="multipart/form-data" data-current-stage="<%= currentStage %>" data-max-stages="<%= maxStages %>">
+
+        <!-- Hidden input for stage being submitted -->
+        <% if (!isComplete) { %>
+          <input type="hidden" name="stageToSubmit" value="<%= nextStage %>">
+        <% } %>
+
+        <!-- === Semester 7 === -->
+        <h3 class="semester-heading">Semester 7</h3>
+
+        <!-- === Seminar 1 Section === -->
+        <fieldset class="seminar-section" id="seminar1-section" <%= (currentStage >= 1) ? 'disabled' : '' %>>
+          <legend>Seminar 1 Submission</legend>
+          <div class="form-row">
+             <div class="form-tab">
+               <label for="projectTitle">Project Title</label>
+               <input type="text" id="projectTitle" name="projectTitle" placeholder="Enter project title" value="<%= project ? project.projectTitle : '' %>" <%= (currentStage === 0) ? 'required' : '' %> <%= leaderCanEdit && currentStage === 0 ? '' : 'readonly' %>>
+             </div>
+             <div class="form-tab">
+               <label for="projectDomain">Project Domain</label>
+               <input type="text" id="projectDomain" name="projectDomain" placeholder="Enter domain" value="<%= project ? project.projectDomain : '' %>" <%= (currentStage === 0) ? 'required' : '' %> <%= leaderCanEdit && currentStage === 0 ? '' : 'readonly' %>>
+             </div>
+          </div>
+          <div class="form-group">
+             <label for="projectOverview">Project Overview</label>
+             <textarea id="projectOverview" name="projectOverview" placeholder="Explain overview" <%= (currentStage === 0) ? 'required' : '' %> <%= leaderCanEdit && currentStage === 0 ? '' : 'readonly' %>><%= project ? project.projectOverview : '' %></textarea>
+          </div>
+          <div class="form-group">
+             <label for="problemStatement">Problem Statement</label>
+             <textarea id="problemStatement" name="problemStatement" placeholder="Enter problem statement" <%= (currentStage === 0) ? 'required' : '' %> <%= leaderCanEdit && currentStage === 0 ? '' : 'readonly' %>><%= project ? project.problemStatement : '' %></textarea>
+          </div>
+          <div class="form-group">
+             <label for="objectives">Project Objectives</label>
+             <textarea id="objectives" name="objectives" placeholder="List the main goals and objectives" <%= (currentStage === 0) ? 'required' : '' %> <%= leaderCanEdit && currentStage === 0 ? '' : 'readonly' %>><%= project ? project.objectives : '' %></textarea>
+          </div>
+          <div class="form-group">
+             <label for="scopeAndFunctionality">Scope and Functionality</label>
+             <textarea id="scopeAndFunctionality" name="scopeAndFunctionality" placeholder="Describe the scope and key features" <%= (currentStage === 0) ? 'required' : '' %> <%= leaderCanEdit && currentStage === 0 ? '' : 'readonly' %>><%= project ? project.scopeAndFunctionality : '' %></textarea>
+          </div>
+          <div class="upload-section">
+             <div class="upload-group">
+               <label>Seminar 1 PPT <%= project && project.seminar1PPT ? '(Uploaded: '+ getFilename(project.seminar1PPT) +')' : '' %></label>
+               <input type="file" name="seminar1PPT" <%= (currentStage === 0 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+             </div>
+             <div class="upload-group">
+               <label>Progress Video 1 <%= project && project.progressVideo1 ? '(Uploaded: '+ getFilename(project.progressVideo1) +')' : '' %></label>
+               <input type="file" name="progressVideo1" <%= (currentStage === 0 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+             </div>
+          </div>
+        </fieldset>
+
+        <!-- === Seminar 2 Section === -->
+        <fieldset class="seminar-section" id="seminar2-section" style="display: <%= (currentStage >= 1) ? 'block' : 'none' %>;" <%= (currentStage < 1 || currentStage >= 2) ? 'disabled' : '' %>>
+          <legend>Seminar 2 Submission</legend>
+           <div class="upload-section">
+             <div class="upload-group">
+               <label>Seminar 2 PPT <%= project && project.seminar2PPT ? '(Uploaded: '+ getFilename(project.seminar2PPT) +')' : '' %></label>
+               <input type="file" name="seminar2PPT" <%= (currentStage === 1 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+             </div>
+             <div class="upload-group">
+               <label>Progress Video 2 <%= project && project.progressVideo2 ? '(Uploaded: '+ getFilename(project.progressVideo2) +')' : '' %></label>
+               <input type="file" name="progressVideo2" <%= (currentStage === 1 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+             </div>
+           </div>
+        </fieldset>
+
+        <!-- === Seminar 3 Section === -->
+        <fieldset class="seminar-section" id="seminar3-section" style="display: <%= (currentStage >= 2) ? 'block' : 'none' %>;" <%= (currentStage < 2 || currentStage >= 3) ? 'disabled' : '' %>>
+          <legend>Seminar 3 Submission <%= (maxStages === 3) ? '/ Final Submission (TE)' : '' %></legend>
+          <div class="upload-section">
+             <div class="upload-group">
+               <label>Seminar 3 PPT <%= project && project.seminar3PPT ? '(Uploaded: '+ getFilename(project.seminar3PPT) +')' : '' %></label>
+               <input type="file" name="seminar3PPT" <%= (currentStage === 2 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+             </div>
+             <div class="upload-group">
+              <label>Progress Video 3 <%= project && project.progressVideo3 ? '(Uploaded: '+ getFilename(project.progressVideo3) +')' : '' %></label>
+              <input type="file" name="progressVideo3" <%= (currentStage === 2 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+            </div>
+             <!-- Show final submission fields only if this is the last stage for TE -->
+             <% if (maxStages === 3) { %>
+               <div class="upload-group">
+                 <label>Project Report <%= project && project.projectReport ? '(Uploaded: '+ getFilename(project.projectReport) +')' : '' %></label>
+                 <input type="file" name="projectReport" <%= (currentStage === 2 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>References <%= project && project.references ? '(Uploaded: '+ getFilename(project.references) +')' : '' %></label>
+                 <input type="file" name="references" <%= (currentStage === 2 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Demonstration Video <%= project && project.demonstrationVideo ? '(Uploaded: '+ getFilename(project.demonstrationVideo) +')' : '' %></label>
+                 <input type="file" name="demonstrationVideo" <%= (currentStage === 2 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Poster <%= project && project.poster ? '(Uploaded: '+ getFilename(project.poster) +')' : '' %></label>
+                 <input type="file" name="poster" <%= (currentStage === 2 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Related Codes (e.g., .zip) <%= project && project.relatedCodes ? '(Uploaded: '+ getFilename(project.relatedCodes) +')' : '' %></label>
+                 <input type="file" name="relatedCodes" <%= (currentStage === 2 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+             <% } %>
+          </div>
+        </fieldset>
+
+        <!-- === SEMESTER 8 SECTIONS (Only for BE Students) === -->
+        <% if (maxStages === 6) { %>
+          <!-- === Semester 8 === -->
+          <h3 class="semester-heading" style="display: <%= (currentStage >= 3) ? 'block' : 'none' %>;">Semester 8</h3>
+
+          <!-- === Seminar 4 Section === -->
+          <fieldset class="seminar-section" id="seminar4-section" style="display: <%= (currentStage >= 3) ? 'block' : 'none' %>;" <%= (currentStage < 3 || currentStage >= 4) ? 'disabled' : '' %>>
+            <legend>Seminar 4 Submission</legend>
+             <div class="upload-section">
+               <div class="upload-group">
+                 <label>Seminar 4 PPT <%= project && project.seminar4PPT ? '(Uploaded: '+ getFilename(project.seminar4PPT) +')' : '' %></label>
+                 <input type="file" name="seminar4PPT" <%= (currentStage === 3 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Progress Video 4 <%= project && project.progressVideo4 ? '(Uploaded: '+ getFilename(project.progressVideo4) +')' : '' %></label>
+                 <input type="file" name="progressVideo4" <%= (currentStage === 3 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+             </div>
+          </fieldset>
+
+          <!-- === Seminar 5 Section === -->
+          <fieldset class="seminar-section" id="seminar5-section" style="display: <%= (currentStage >= 4) ? 'block' : 'none' %>;" <%= (currentStage < 4 || currentStage >= 5) ? 'disabled' : '' %>>
+            <legend>Seminar 5 Submission</legend>
+             <div class="upload-section">
+               <div class="upload-group">
+                 <label>Seminar 5 PPT <%= project && project.seminar5PPT ? '(Uploaded: '+ getFilename(project.seminar5PPT) +')' : '' %></label>
+                 <input type="file" name="seminar5PPT" <%= (currentStage === 4 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Progress Video 5 <%= project && project.progressVideo5 ? '(Uploaded: '+ getFilename(project.progressVideo5) +')' : '' %></label>
+                 <input type="file" name="progressVideo5" <%= (currentStage === 4 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+             </div>
+          </fieldset>
+
+          <!-- === Seminar 6 Section === -->
+          <fieldset class="seminar-section" id="seminar6-section" style="display: <%= (currentStage >= 5) ? 'block' : 'none' %>;" <%= (currentStage < 5 || currentStage >= 6) ? 'disabled' : '' %>>
+            <legend>Seminar 6 Submission / Final Submission (BE)</legend>
+            <div class="upload-section">
+               {{ <!-- Seminar 6 PPT and Video --> }}
+               <div class="upload-group">
+                 <label>Seminar 6 PPT <%= project && project.seminar6PPT ? '(Uploaded: '+ getFilename(project.seminar6PPT) +')' : '' %></label>
+                 <input type="file" name="seminar6PPT" <%= (currentStage === 5 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Progress Video 6 <%= project && project.progressVideo6 ? '(Uploaded: '+ getFilename(project.progressVideo6) +')' : '' %></label>
+                 <input type="file" name="progressVideo6" <%= (currentStage === 5 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+
+               {{ <!-- Final Submission Fields for BE --> }}
+               <div class="upload-group">
+                 <label>Project Report <%= project && project.projectReport ? '(Uploaded: '+ getFilename(project.projectReport) +')' : '' %></label>
+                 <input type="file" name="projectReport" <%= (currentStage === 5 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>References <%= project && project.references ? '(Uploaded: '+ getFilename(project.references) +')' : '' %></label>
+                 <input type="file" name="references" <%= (currentStage === 5 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Demonstration Video <%= project && project.demonstrationVideo ? '(Uploaded: '+ getFilename(project.demonstrationVideo) +')' : '' %></label>
+                 <input type="file" name="demonstrationVideo" <%= (currentStage === 5 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Poster <%= project && project.poster ? '(Uploaded: '+ getFilename(project.poster) +')' : '' %></label>
+                 <input type="file" name="poster" <%= (currentStage === 5 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+               <div class="upload-group">
+                 <label>Related Codes (e.g., .zip) <%= project && project.relatedCodes ? '(Uploaded: '+ getFilename(project.relatedCodes) +')' : '' %></label>
+                 <input type="file" name="relatedCodes" <%= (currentStage === 5 && leaderCanEdit) ? 'required' : '' %> <%= !leaderCanEdit ? 'disabled' : '' %>>
+               </div>
+            </div>
+          </fieldset>
+        <% } %> <!-- End BE specific sections -->
+
+        <!-- Submit Button Logic -->
+        <% if (leaderCanEdit) { %>
+          <button type="submit" class="submit-button">Submit Stage <%= nextStage %></button>
+        <% } else if (isComplete) { %>
+          <p class="completion-message">All project stages submitted.</p>
+          <% if (isLeader) { %> <%# Show disabled button only to leader if complete %>
+            <button type="submit" class="submit-button" disabled>Project Complete</button>
+          <% } %>
+        <% } else if (!isLeader) { %>
+           <p class="view-only-message">Only the group leader can submit stages.</p>
+        <% } %>
+
+      </form>
+    </div>
+    </section>
+    <script src="/JS/add_project.js"></script>
+</body>
+</html>

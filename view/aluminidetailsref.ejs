@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Details</title>
+    <link rel="stylesheet" href="/CSS/alumniDetails.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Alumni Details</h1>
+        </div>
+        <div class="details">
+            <!-- Add profile image display -->
+            <img src="<%= user.profileImagePath %>" alt="Profile Image" style="width: 150px; height: auto; border-radius: 50%; margin-bottom: 20px;">
+            <!-- End profile image display -->
+            <p><strong>Name:</strong> <%= user.name %></p>
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <p><strong>Mobile No.:</strong> <%= user.mobile %></p>
+            <p><strong>Year:</strong> <%= user.year %></p>
+            <p><strong>Academic Year:</strong> <%= user.academicYear %></p>
+            <!-- Add more fields as necessary -->
+        </div>
+        <button class="back-button" onclick="window.history.back()">Back</button>
+    </div>
+</body>
+</html>

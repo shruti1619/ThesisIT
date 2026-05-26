@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <link rel="stylesheet" href="/CSS/projectDetails.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Project Details</h1>
+        </div>
+        <div class="details">
+
+            <p><strong>Title:</strong> <%= project.projectTitle %></p>
+            <p><strong> Year:</strong> <%= year %></p>
+            <p><strong>Domain:</strong> <%= project.projectDomain %></p>
+            <p><strong>Overview:</strong> <%= project.projectOverview %></p>
+            <p><strong>Problem Statement:</strong> <%= project.problemStatement %></p>
+            <p><strong>Project Objectives:</strong> <%= project.objectives %></p>
+            <p><strong>Project Scope and Functionality:</strong> <%= project.scopeAndFunctionality %></p>
+           
+
+        </div>
+        <button class="back-button" onclick="window.history.back()">Back</button>
+        <button class="alumni-button" onclick="window.location.href='/projecthub/alumni/<%= project.groupId._id %>'">View Alumni</button>
+    </div>
+    <script>
+        console.log(document.querySelector('.alumni-button').getAttribute('onclick'));
+    </script>
+</body>
+</html>

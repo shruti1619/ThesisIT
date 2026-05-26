@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThesisIT - Guide Sign In</title>
+    <link rel="stylesheet" href="/CSS/loginGuide.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="/IMAGES/logo.png" alt="Thesis Logo"></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="sign-in-section">
+            <h2>Guide Sign In</h2>
+            <!-- Updated form action to match the guide login route -->
+            <form action="/guide/signin" method="POST" onsubmit="return validateForm()">
+                <div class="textbox">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                </div>
+                <div class="textbox">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-links">
+                    <a href="forgot.html">Forgot Password?</a>
+                </div>
+                <!-- Removed anchor tag inside button -->
+                <button type="submit" class="login-btn">Log In</button>
+                <div class="create-account">
+                    <a href="/api/signupguide">Create account</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-left">
+            <div class="logo">
+                <a href="index.html"><img src="/IMAGES/white logo.png" alt="Thessit Logo"></a>
+            </div>
+            <p>"Your Academic Projects, Our Priority"</p>
+        </div>
+
+        <div class="footer-middle">
+            <h3>QUICK LINKS</h3>
+            <ul>
+                <li><a href="/Welcome">Home</a></li>
+                <li><a href="/api/aboutus">About Us</a></li>
+                <li><a href="/api/contact">Contact Us</a></li>
+                <li><a href="/api/homefaq">FAQs</a></li>
+                <li><a href="/api/option">Register</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-right">
+            <h3>GET IN TOUCH</h3>
+            <p>Email: thessisit@gmail.com</p>
+        </div>
+    </footer>
+
+    <script src="/JS/loginGuide.js"></script>
+</body>
+</html>

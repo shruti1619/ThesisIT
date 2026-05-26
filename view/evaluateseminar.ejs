@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluate Seminar <%= seminarNumber %></title>
+    <link rel="stylesheet" href="/CSS/evaluateseminar.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2>Evaluate Seminar <%= seminarNumber %></h2>
+    </nav>
+
+    <div class="container">
+        <%# Check for essential data %>
+        <% if (typeof group === 'undefined' || typeof guide === 'undefined' || typeof criteria === 'undefined') { %>
+            <p class="data-warning">Warning: Essential data missing. Cannot render form.</p>
+        <% } else { %>
+            <!-- Project Information Section -->
+            <div class="info-section">
+                <legend>Project Information</legend>
+                <div class="info-item">
+                    <label>Project Title:</label>
+                    <span><%= typeof project !== 'undefined' && project ? project.projectTitle : 'Not Submitted Yet' %></span>
+                </div>
+                <div class="info-item">
+                    <label>Academic Year:</label>
+                    <span><%= group.academicYear %></span>
+                </div>
+                <div class="info-item">
+                    <label>Guide:</label>
+                    <span><%= typeof guide !== 'undefined' && guide.name ? guide.name : 'Unknown Guide' %></span>
+                </div>
+                <div class="info-item">
+                    <label>Members:</label>
+                    <span>
+                        <% if (typeof group.members !== 'undefined' && Array.isArray(group.members)) { %>
+                            <% group.members.forEach((member, index) => { %>
+                                <%= member.name %> (<%= member.rollNo || 'No Roll#' %>)<% if (index < group.members.length - 1) { %>, <% } %>
+                            <% }) %>
+                        <% } else { %>
+                            No member data available.
+                        <% } %>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Evaluation Form Section -->
+            <h4>Evaluation Criteria (Max per Member: <%= maxTotal %> Marks)</h4>
+            <form id="evaluationForm" action="/guide/evaluate" method="POST">
+                <input type="hidden" name="groupId" value="<%= group._id %>">
+                <input type="hidden" name="seminarNumber" value="<%= seminarNumber %>">
+                <% if (project) { %>
+                    <input type="hidden" name="projectId" value="<%= project._id %>">
+                <% } %>
+
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th>Sr No.</th>
+                            <th>Student Name</th>
+                            <th>Roll No.</th>
+                            <th>Topic Name</th>
+                            <th>Guide</th>
+                            <% Object.entries(criteria).forEach(([key, details]) => { %>
+                                <th><%= details.label %> (<%= details.max %>)</th>
+                            <% }) %>
+                            <th>Total (<%= maxTotal %>)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (group.members && group.members.length) { %>
+                            <% group.members.forEach((member, index) => { %>
+                                <% let memberEvalData = null; %>
+                                <% if (evaluation && evaluation.memberMarks) { %>
+                                    <% memberEvalData = evaluation.memberMarks.find(m => m.memberId.toString() === member._id.toString()); %>
+                                <% } %>
+                                <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td><%= member.name %></td>
+                                    <td><%= member.rollNo || 'No Roll#' %></td>
+                                    <% if (index === 0) { %>
+                                        <td rowspan="<%= group.members.length %>"><%= project ? project.projectTitle : 'N/A' %></td>
+                                        <td rowspan="<%= group.members.length %>"><%= guide ? guide.name : 'Unknown Guide' %></td>
+                                    <% } %>
+                                    <% Object.entries(criteria).forEach(([key, details]) => { %>
+                                        <% let existingScore = ''; %>
+                                        <% if (memberEvalData && memberEvalData.marks && typeof memberEvalData.marks[key] !== 'undefined') { %>
+                                            <% existingScore = memberEvalData.marks[key]; %>
+                                        <% } %>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                id="marks_<%= member._id %>_<%= key %>"
+                                                name="marks[<%= member._id %>][<%= key %>]"
+                                                min="0"
+                                                max="<%= details.max %>"
+                                                step="0.5"
+                                                required
+                                                value="<%= existingScore %>"
+                                                oninput="updateMemberTotal('<%= member._id %>')"
+                                                aria-describedby="marks_<%= member._id %>_<%= key %>-error"
+                                            >
+                                            <div id="marks_<%= member._id %>_<%= key %>-error" class="error-message"></div>
+                                        </td>
+                                    <% }) %>
+                                    <td><span id="total_<%= member._id %>">0</span> / <%= maxTotal %></td>
+                                </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="<%= Object.keys(criteria).length + 7 %>">No members found in this group.</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+
+    
+
+                <!-- Buttons -->
+                <div class="button-container">
+                     <a href="/guide/view/<%= group._id %>" class="back-link">Cancel</a>
+                    <button type="submit" class="submit-button ">
+                        <%= evaluation ? 'Update Evaluation' : 'Submit Evaluation' %>
+                    </button>
+                </div>
+            </form>
+        <% } %>
+    </div>
+
+    <script>
+        const criteria = <%- JSON.stringify(criteria || {}) %>;
+        const members = <%- JSON.stringify((group && group.members) ? group.members : []) %>;
+        const maxTotal = <%- maxTotal || 0 %>;
+        const hasExistingEvaluation = <%= evaluation ? true : false %>;
+    </script>
+    <script src="/JS/evaluateSeminar.js"></script>
+</body>
+</html>

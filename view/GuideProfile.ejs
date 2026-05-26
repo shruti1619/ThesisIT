@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/CSS/GuideProfile.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">
+        <img src="/IMAGES/logo.png" alt="Logo" class="logo">
+        </a>
+        <a href="/guide/logout" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg>
+          </a>
+          
+        
+    </div>
+
+   
+    <div class="profile-container">
+        <!-- === Modified Profile Pic Section === -->
+        <form action="/guide/update-profile" method="POST" enctype="multipart/form-data" id="profile-form"> <!-- Added id="profile-form" -->
+
+            <div class="profile-pic-container"> <!-- Added a container -->
+                <label for="profileImageInput" class="profile-pic-label" title="Click to change profile picture">
+                    <!-- The actual image displayed -->
+                    <img src="<%= user.profileImagePath ? user.profileImagePath : '/IMAGES/profile.png' %>" alt="Profile Picture" class="profile-img" id="profileImagePreview">
+                    <!-- Hidden file input triggered by the label -->
+                    <input type="file" id="profileImageInput" name="profileImage" accept="image/*" style="display: none;">
+                </label>
+                <h3><%= user.username %></h3> <!-- Display the username below the image -->
+            </div>
+            <!-- === End Modified Profile Pic Section === -->
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" value="<%= user.name %>" required> <!-- Added required -->
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<%= user.email %>" required> <!-- Added required -->
+            </div>
+
+
+            <div class="form-group">
+                <label for="academicYear">Academic Year</label>
+                <input type="text" id="academicYear" name="academicYear" value="<%= user.academicYear %>">
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile No.</label>
+                <input type="text" id="mobile" name="mobile" value="<%= user.mobile %>">
+            </div>
+
+            <!-- === Removed the old file input field === -->
+            <!--
+            <div class="form-group">
+                <label for="profileImage">Upload Profile Picture</label>
+                <input type="file" id="profileImage" name="profileImage">
+            </div>
+             -->
+
+            <button type="submit" class="submit-btn">Update Profile</button> <!-- Changed button text -->
+        </form>
+    </div>
+
+
+    <script src="/JS/GuideProfile.js"></script>
+    <!-- Add script for image preview -->
+    <script>
+        document.getElementById('profileImageInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImagePreview').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // --- Optional: Re-integrate fetch submission from GuideProfile.js ---
+        // If you want to keep the AJAX submission without page reload:
+        const profileForm = document.getElementById('profile-form');
+        if (profileForm) {
+            profileForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const formData = new FormData(profileForm);
+
+                fetch('/guide/update-profile', {
+                    method: 'POST',
+                    body: formData // FormData handles enctype automatically
+                })
+                .then(response => response.json()) // Always parse JSON
+                .then(data => {
+                    if (data.success) {
+                        alert('Profile updated successfully!');
+                        // Optionally update image source again if backend provides a final path
+                        if(data.profileImagePath) {
+                             document.getElementById('profileImagePreview').src = data.profileImagePath + '?t=' + new Date().getTime(); // Add timestamp to break cache
+                        }
+                        // No reload needed if using fetch
+                        // window.location.reload();
+                    } else {
+                        alert('Error updating profile: ' + (data.error || 'Unknown error'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An unexpected error occurred. Please try again.');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

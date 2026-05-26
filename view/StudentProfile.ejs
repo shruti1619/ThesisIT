@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/CSS/finalProfile.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">
+        <img src="/IMAGES/logo.png" alt="Logo" class="logo">
+        </a>
+        <h2 class="navbar-title">My Profile</h2>
+        <a href="/student/logout" class="logout-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg>
+        </a>
+    </div>
+
+    <div class="profile-pic-container"> <!-- Added a container -->
+        <form action="/student/update-profile" method="POST" enctype="multipart/form-data" id="profile-form"> <!-- Added id="profile-form" -->
+
+            <div class="profile-pic-container"> <!-- Added a container -->
+                <label for="profileImageInput" class="profile-pic-label" title="Click to change profile picture">
+                    <!-- The actual image displayed -->
+                    <img src="<%= user.profileImagePath ? user.profileImagePath : '/IMAGES/profile.png' %>" alt="Profile Picture" class="profile-img" id="profileImagePreview">
+                    <!-- Hidden file input triggered by the label -->
+                    <input type="file" id="profileImageInput" name="profileImage" accept="image/*" style="display: none;">
+                </label>
+                <h3><%= user.username %></h3> <!-- Display the username below the image -->
+            </div>
+            
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" value="<%= user.name %>">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="<%= user.email %>">
+        </div>
+
+        <div class="form-group">
+            <label for="prn">PRN</label>
+            <input type="text" id="prn" name="prn" value="<%= user.prn %>" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="rollNo">Roll No</label>
+            <input type="text" id="rollNo" name="rollNo" value="<%= user.rollNo %>">
+        </div>
+
+        <div class="form-group">
+            <label for="academicYear">Academic Year</label>
+            <input type="text" id="academicYear" name="academicYear" value="<%= user.academicYear %>">
+        </div>
+
+        <div class="form-group">
+            <label for="year">YEAR</label>
+            <input type="text" id="year" name="year" value="<%= user.year %>">
+        </div>
+
+        <div class="form-group">
+            <label for="mobile">Mobile No.</label>
+            <input type="text" id="mobile" name="mobile" value="<%= user.mobile %>">
+        </div>
+
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+<script src="/JS/studentProfile.js"></script>
+
+<!-- === Ensure the inline script block for AJAX/preview is still here === -->
+<!-- Make sure the <script> block we added previously for handling -->
+<!-- image preview and fetch submission is present below this line -->
+<!-- (or that its functionality is inside studentProfile.js) -->
+
+</body>
+</html>

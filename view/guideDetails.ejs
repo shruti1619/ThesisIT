@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Details</title>
+    <link rel="stylesheet" href="/CSS/guideDetails.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Guide Details</h1>
+        <table class="guide-table">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Guide Name</th>
+                    <th>Academic Year</th>
+                    <th> Groups Assigned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% guides.forEach((guide, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= guide.name %></td>
+                        <td><%= guide.academicYear %></td>
+                        <td><% guideGroups.forEach(({ guide, groupCount }) => { %>
+                            
+                                 <%= groupCount %> groups
+                                <button onclick="location.href='/admin/guide-groups/<%= guide._id %>'">View Groups</button>
+                           
+                        <% }) %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Management</title>
+  <link rel="stylesheet" href="/CSS/PRviewOverall.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h2>Project Refinery</h2>
+  </nav>
+  <div class="container">
+    <button class="view-project">Add Project</button>
+    <form id="project-form" method="POST" action="/projectref/submit"> <!-- Ensure method and action are set -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="projectTitle">Project Title</label>
+          <input type="text" id="projectTitle" name="projectTitle" placeholder="Enter project title"  required >
+        </div>
+        <div class="form-group"> <!-- Add Domain field -->
+          <label for="domain">Domain</label>
+          <input type="text" id="domain" name="domain" placeholder="enter domain" required>
+        </div>
+        <div class="form-group">
+          <label for="problemStatement">Problem Statement</label>
+          <textarea id="problemStatement" name="problemStatement" placeholder="Enter problem statement" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="projectOverview">Project Overview</label>
+          <textarea id="projectOverview" name="projectOverview" placeholder="Enter project overview" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="limitation">Limitation</label>
+          <textarea id="limitation" name="limitation" placeholder="Enter limitations" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="technicalIssues">Technical Issues</label>
+          <textarea id="technicalIssues" name="technicalIssues" placeholder="Enter technical issues" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="futureScope">Future Scope</label>
+          <textarea id="futureScope" name="futureScope" placeholder="Enter future scope" required></textarea>
+        </div>
+        
+        
+      </div>
+      <button type="submit" class="submit-button">Submit</button> <!-- Change button text to 'Submit' -->
+    </form>
+  </div>
+  <!-- <script src="/JS/PRviewOverall.js"></script> -->
+  <script>
+    document.getElementById('project-form').addEventListener('submit', function(event) {
+      const fields = ['projectTitle','problemStatement', 'projectOverview', 'limitation', 'futureScope', 'technicalIssues', 'domain'];
+      let valid = true;
+
+      fields.forEach(field => {
+        const input = document.getElementById(field);
+        if (!input.value.trim()) {
+          valid = false;
+          input.style.borderColor = 'red'; // Highlight empty fields
+        } else {
+          input.style.borderColor = ''; // Reset border color
+        }
+      });
+
+      if (!valid) {
+        event.preventDefault(); // Prevent form submission if validation fails
+        alert('Please fill in all fields.');
+      }
+    });
+  </script>
+</body>
+</html>

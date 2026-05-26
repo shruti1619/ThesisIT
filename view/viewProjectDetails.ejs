@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Project Details - <%= group.groupName %></title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling for clarity */
+        body { font-family: 'Poppins', sans-serif; margin: 20px; background-color: #f4f7f6; color: #333; }
+        /* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ADB5BD;
+    padding: 10px 20px;
+    height:50px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    height: 60px;
+}
+.navbar-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.logout-icon {
+    text-decoration: none;
+}
+
+        .container { max-width: 1000px; margin: 20px auto; background: #ffffff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2, h3 { color: #2c3e50; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; margin-top: 30px; }
+            .section {
+                margin-bottom: 25px;
+                padding: 20px;
+                border: 1px solid #e0e0e0;
+                border-radius: 6px;
+                background: #fdfdfd;
+                width: 950px; /* Ensure full width to match the container */
+            }
+            .section legend { font-weight: 600; font-size: 1.2em; color: #34495e; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #eee; }
+            .info-item { margin-bottom: 15px; line-height: 1.6; }
+            .info-item label { font-weight: 500; display: block; margin-bottom: 5px; color: #555; font-size: 0.95em; }
+            .info-item span, .info-item ul, .info-item pre { display: block; margin-left: 10px; color: #444; background-color: #f8f9fa; padding: 8px 12px; border-radius: 4px; border: 1px solid #eee; }
+            .info-item pre { white-space: pre-wrap; word-wrap: break-word; font-family: inherit; }
+            .info-item ul { list-style: none; padding-left: 0; margin-left: 0; background: none; border: none; padding: 0; }
+            .info-item ul li { background-color: #f8f9fa; padding: 8px 12px; border-radius: 4px; border: 1px solid #eee; margin-bottom: 5px; }
+            .download-link { display: inline-block; margin-left: 15px; padding: 6px 12px; background-color: #3498db; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; transition: background-color 0.3s ease; vertical-align: middle; }
+            .download-link:hover { background-color: #2980b9; }
+            .no-file { color: #95a5a6; font-style: italic; margin-left: 15px; background-color: #f8f9fa; padding: 8px 12px; border-radius: 4px; border: 1px solid #eee; display: inline-block; }
+            .back-link { display: inline-block; margin-top: 25px; padding: 10px 18px; background-color: #7f8c8d; color: white; text-decoration: none; border-radius: 4px; transition: background-color 0.3s ease; }
+            .back-link:hover { background-color: #6c7a7d; }
+            .filename { display: inline-block; max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
+            /* Style for the evaluate button */
+            .evaluate-button {
+                display: inline-block;
+                margin-top: 15px; /* Add some space above the button */
+                margin-right: 10px; /* Add space between buttons */
+                padding: 8px 15px;
+                background-color: #2ecc71; /* Green color */
+                color: white;
+                text-decoration: none;
+                border-radius: 4px;
+                font-size: 0.95em;
+                transition: background-color 0.3s ease;
+                border: none; /* Remove default button border if using <button> */
+                cursor: pointer;
+            }
+            .evaluate-button:hover {
+                background-color: #27ae60; /* Darker green on hover */
+            }
+        
+            /* Style for the feedback button */
+            .feedback-button {
+                display: inline-block;
+                margin-top: 15px; /* Match evaluate button spacing */
+                padding: 8px 15px;
+                background-color: #e67e22; /* Orange color */
+                color: white;
+                text-decoration: none;
+                border-radius: 4px;
+                font-size: 0.95em;
+                transition: background-color 0.3s ease;
+                border: none;
+                cursor: pointer;
+            }
+            .feedback-button:hover {
+                background-color: #d35400; /* Darker orange on hover */
+            }
+            
+        </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">
+        <img src="/IMAGES/logo.png" alt="Logo" class="logo">
+        </a>
+        <h2 class="navbar-title">Project Details</h2>
+        <a href="/guide/logout" class="logout-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg>
+        </a>
+    </div>
+    <div class="container">
+        <h2>Group Name: <%= group.groupName %></h2>
+        <h3>Academic Year: <%= group.academicYear %></h3>
+
+        <% if (project) { %>
+            <% const studentYear = group.year.startsWith('TE') ? 'TE' : 'BE'; %>
+            <% const maxStages = studentYear === 'TE' ? 3 : 6; %>
+            <% const currentStage = project.submissionStage || 0; // Default to 0 if undefined %>
+
+            <!-- Basic Project Info -->
+            <div class="section">
+                <legend>Project Information</legend>
+                <div class="info-item">
+                    <label>Project Title:</label>
+                    <span><%= project.projectTitle %></span>
+                </div>
+                <div class="info-item">
+                    <label>Project Domain:</label>
+                    <span><%= project.projectDomain %></span>
+                </div>
+                <div class="info-item">
+                    <label>Project Overview:</label>
+                    <span><pre><%= project.projectOverview %></pre></span>
+                </div>
+                <div class="info-item">
+                    <label>Problem Statement:</label>
+                    <span><pre><%= project.problemStatement %></pre></span>
+                </div>
+                <div class="info-item">
+                    <label>Project Objectives:</label>
+                    <span><pre><%= project.objectives %></pre></span>
+                </div>
+                <div class="info-item">
+                    <label>Project Scope and Functionality:</label>
+                    <span><pre><%= project.scopeAndFunctionality %></pre></span>
+                </div>
+                 <div class="info-item">
+                    <label>Current Submission Stage:</label>
+                    <span><%= currentStage %> / <%= maxStages %></span>
+                </div>
+            </div>
+
+            <!-- Function to generate download link -->
+            <% function renderDownloadLink(filePath, label) { %>
+                <% if (filePath) { %>
+                    <% const filename = filePath.split('\\').pop().split('-').slice(3).join('-'); %>
+                    <% const encodedPath = Buffer.from(filePath).toString('base64'); // Encode path for URL safety %>
+                    <div class="info-item">
+                        <label><%= label %>:</label>
+                        <span><%= filename %></span>
+                        <a href="/guide/download/<%= encodedPath %>" class="download-link" target="_blank">Download</a>
+                    </div>
+                <% } else { %>
+                     <div class="info-item">
+                        <label><%= label %>:</label>
+                        <span class="no-file">Not Submitted</span>
+                    </div>
+                <% } %>
+            <% } %>
+
+            <!-- Seminar 1 -->
+            <% if (currentStage >= 1 || project.seminar1PPT || project.progressVideo1) { %>
+            <div class="section">
+                <legend>Seminar 1 Submissions</legend>
+                <%- renderDownloadLink(project.seminar1PPT, 'Seminar 1 PPT') %>
+                <%- renderDownloadLink(project.progressVideo1, 'Progress Video 1') %>
+                <%# Add Evaluate Button for Seminar 1 %>
+                <a href="/guide/evaluate/<%= group._id %>/1" class="evaluate-button">Evaluate Seminar 1</a>
+                <%# Add Feedback Button for Seminar 1 %>
+                <a href="/guide/feedback/<%= group._id %>/1" class="feedback-button">Feedback Seminar 1</a>
+            </div>
+            <% } %>
+
+            <!-- Seminar 2 -->
+             <% if (currentStage >= 2 || project.seminar2PPT || project.progressVideo2) { %>
+            <div class="section">
+                <legend>Seminar 2 Submissions</legend>
+                <%- renderDownloadLink(project.seminar2PPT, 'Seminar 2 PPT') %>
+                <%- renderDownloadLink(project.progressVideo2, 'Progress Video 2') %>
+                <%# Add Evaluate Button for Seminar 2 %>
+                <a href="/guide/evaluate/<%= group._id %>/2" class="evaluate-button">Evaluate Seminar 2</a>
+                <%# Add Feedback Button for Seminar 2 %>
+                <a href="/guide/feedback/<%= group._id %>/2" class="feedback-button">Feedback Seminar 2</a>
+            </div>
+             <% } %>
+
+            <!-- Seminar 3 / Final (TE) -->
+             <% if (currentStage >= 3 || project.seminar3PPT || project.progressVideo3 || (maxStages === 3 && (project.projectReport || project.references || project.demonstrationVideo || project.poster || project.relatedCodes))) { %>
+            <div class="section">
+                <legend>Seminar 3 <%= (maxStages === 3) ? '/ Final (TE)' : '' %> Submissions</legend>
+                <%- renderDownloadLink(project.seminar3PPT, 'Seminar 3 PPT') %>
+                <%- renderDownloadLink(project.progressVideo3, 'Progress Video 3') %>
+                <% if (maxStages === 3) { %>
+                    <%- renderDownloadLink(project.projectReport, 'Project Report') %>
+                    <%- renderDownloadLink(project.references, 'References') %>
+                    <%- renderDownloadLink(project.demonstrationVideo, 'Demonstration Video') %>
+                    <%- renderDownloadLink(project.poster, 'Poster') %>
+                    <%- renderDownloadLink(project.relatedCodes, 'Related Codes (ZIP/RAR)') %>
+                <% } %>
+                <%# Add Evaluate Button for Seminar 3 %>
+                <a href="/guide/evaluate/<%= group._id %>/3" class="evaluate-button">Evaluate Seminar 3 <%= (maxStages === 3) ? '/ Final' : '' %></a>
+                <%# Add Feedback Button for Seminar 3 %>
+                <a href="/guide/feedback/<%= group._id %>/3" class="feedback-button">Feedback Seminar 3 <%= (maxStages === 3) ? '/ Final' : '' %></a>
+            </div>
+             <% } %>
+
+            <!-- BE Specific Sections -->
+            <% if (maxStages === 6) { %>
+                <!-- Seminar 4 -->
+                 <% if (currentStage >= 4 || project.seminar4PPT || project.progressVideo4) { %>
+                <div class="section">
+                    <legend>Seminar 4 Submissions</legend>
+                    <%- renderDownloadLink(project.seminar4PPT, 'Seminar 4 PPT') %>
+                    <%- renderDownloadLink(project.progressVideo4, 'Progress Video 4') %>
+                    <%# Add Evaluate Button for Seminar 4 %>
+                    <a href="/guide/evaluate/<%= group._id %>/4" class="evaluate-button">Evaluate Seminar 4</a>
+                    <%# Add Feedback Button for Seminar 4 %>
+                    <a href="/guide/feedback/<%= group._id %>/4" class="feedback-button">Feedback Seminar 4</a>
+                </div>
+                 <% } %>
+
+                <!-- Seminar 5 -->
+                 <% if (currentStage >= 5 || project.seminar5PPT || project.progressVideo5) { %>
+                <div class="section">
+                    <legend>Seminar 5 Submissions</legend>
+                    <%- renderDownloadLink(project.seminar5PPT, 'Seminar 5 PPT') %>
+                    <%- renderDownloadLink(project.progressVideo5, 'Progress Video 5') %>
+                    <%# Add Evaluate Button for Seminar 5 %>
+                    <a href="/guide/evaluate/<%= group._id %>/5" class="evaluate-button">Evaluate Seminar 5</a>
+                    <%# Add Feedback Button for Seminar 5 %>
+                    <a href="/guide/feedback/<%= group._id %>/5" class="feedback-button">Feedback Seminar 5</a>
+                </div>
+                 <% } %>
+
+                <!-- Seminar 6 / Final (BE) -->
+                 <% if (currentStage >= 6 || project.seminar6PPT || project.projectReport || project.references || project.demonstrationVideo || project.poster || project.relatedCodes) { %>
+                <div class="section">
+                    <legend>Seminar 6 / Final Submissions</legend>
+                    <%- renderDownloadLink(project.seminar6PPT, 'Seminar 6 PPT') %>
+                    <%- renderDownloadLink(project.projectReport, 'Final Project Report') %>
+                    <%- renderDownloadLink(project.references, 'Final References') %>
+                    <%- renderDownloadLink(project.demonstrationVideo, 'Final Demonstration Video') %>
+                    <%- renderDownloadLink(project.poster, 'Final Poster') %>
+                    <%- renderDownloadLink(project.relatedCodes, 'Final Related Codes (ZIP/RAR)') %>
+                    <%# Add Evaluate Button for Seminar 6 / Final %>
+                    <a href="/guide/evaluate/<%= group._id %>/6" class="evaluate-button">Evaluate Seminar 6 / Final</a>
+                    <%# Add Feedback Button for Seminar 6 / Final %>
+                    <a href="/guide/feedback/<%= group._id %>/6" class="feedback-button">Feedback Seminar 6 / Final</a>
+                </div>
+                 <% } %>
+            <% } %>
+
+        <% } else { %>
+            <p>No project details submitted by this group yet.</p>
+        <% } %>
+
+        <a href="/guide/projectGuidedash" class="back-link">Back to Dashboard</a>
+    </div>
+
+    <!-- Add Cumulative Totals Section -->
+    <% if (group.year.startsWith('TE')) { %>
+        <h3>Third Year Cumulative Totals</h3>
+    <% } else { %>
+        <h3>7th Sem Total Marks</h3>
+    <% } %>
+    <div class="section">
+        <ul>
+            <% group.members.forEach(member => { %>
+                <li>
+                    <%= member.name %>: <%= memberCumulativeTotals[member._id.toString()].tyTotal %> marks
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <h3>Final Year Cumulative Totals</h3>
+    <div class="section">
+        <ul>
+            <% group.members.forEach(member => { %>
+                <li>
+                    <%= member.name %>: <%= memberCumulativeTotals[member._id.toString()].fyTotal %> marks
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>

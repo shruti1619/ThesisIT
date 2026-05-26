@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alumni List</title>
+    <link rel="stylesheet" href="/CSS/adminAlumniList.css"> <!-- Optional: Your styling -->
+</head>
+<body>
+    <div class="container">
+        <h1>All Alumni</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Year of Passing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% alumniList.forEach((alumni, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= alumni.name %></td>
+                        <td><%= alumni.email %></td>
+                        <td><%= alumni.yearOfPassing %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

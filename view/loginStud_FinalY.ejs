@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThesisIT - Sign In</title>
+    <link rel="stylesheet" href="/CSS/loginStudFinalY.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="/Welcome"><img src="/images/logo.png" alt="Thesis Logo"></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="sign-in-section">
+            <h2>Sign In</h2>
+            <div id="error" class="error-message" style="display: none; color: red; margin-bottom: 15px; padding: 10px; background-color: #ffe6e6; border-radius: 4px;"></div>
+            <!-- Add onsubmit attribute -->
+            <form action="/student/signin" method="POST" onsubmit="return handleLoginSubmit(event);">
+                <div class="textbox">
+                    <label for="Username">Username</label>
+                    <input type="username" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="textbox">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-links">
+                    <a href="/forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn" id="login-btn">Log In</button>
+                <div class="create-account">
+                 <a href="/api/signupstu">Create account</a>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-left">
+            <div class="logo"> 
+                <img src="/images/white logo.png" alt="Thessit Logo">
+            </div>
+            <p>"Your Academic Projects, Our Priority"</p>
+        </div>
+
+        <div class="footer-middle">
+            <h3>QUICK LINKS</h3>
+            <ul>
+                <li><a href="/Welcome">Home</a></li>
+                <li><a href="/api/aboutus">About Us</a></li>
+                <li><a href="/api/contact">Contact Us</a></li>
+                <li><a href="/api/homefaq">FAQs</a></li>
+                <li><a href="/api/option">Register</a></li>
+            </ul>
+        </div>
+        <!-- Remove this duplicate error div -->
+        <!-- <div id="error" style="display: none; color: red;"></div> -->
+        <div class="footer-right">
+            <h3>GET IN TOUCH</h3>
+            <p>Email: thessisit@gmail.com</p>
+        </div>
+    </footer>
+
+    <!-- Ensure the correct JS file is linked -->
+    <script src="/JS/login.js"></script>
+</body>
+</html>

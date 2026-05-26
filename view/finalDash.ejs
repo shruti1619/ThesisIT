@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/CSS/stud_final.css">
+</head>
+<body id="final_student_dashboard_page">
+  <div class="scroll-container">
+      <header class="header">
+    <div class="header-content">
+      <img src="/IMAGES/white logo.png" alt="Logo" class="logo">
+      <h1 id="heading">Student Dashboard</h1>
+      <div class="icons">
+        <a href="#">
+          <!-- <i class="fa-regular fa-bell" title="faqs"></i> -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-bell" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+          </svg>
+        </a>
+        <a href="#">
+          <!-- <i class="fa-regular fa-user"></i> -->
+          <a href="/student/profile"> <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-person-square" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+          </svg>
+        </a>
+        <a href="/student/logout" class="logout-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+          </svg>
+      </a>
+      </div>
+    </div>
+   
+    <div class="search-bar-container">
+      <div class="search-bar-wraper">
+
+      <input type="text" placeholder="Search Here" id="search-bar">
+      <img src="/IMAGES/Leading-icon.png" class="dropdown-lines" alt="Dropdown Lines">
+
+      <!-- === Modified Dropdown Menu === -->
+      <ul class="dropdown-menu">
+        <span class="close-btn">&times;</span>
+        <% if (typeof projectDomains !== 'undefined' && projectDomains.length > 0) { %>
+          <% projectDomains.forEach(domain => { %>
+            <% const encodedDomain = encodeURIComponent(domain); %>
+            <%# Prepend /student/ to the href %>
+            <li><a href="/student/projects/domain/<%= encodedDomain %>"><%= domain %></a></li>
+          <% }); %>
+        <% } else { %>
+          <li><a href="#">No domains found</a></li>
+        <% } %>
+      </ul>
+      <!-- === End Modified Dropdown Menu === -->
+
+      <img src="/IMAGES/search bar.png" class="search-icon" alt="Search Icon">
+    </div>
+      </div>
+     </div>
+  </header>
+
+  <nav class="top-nav">
+    <ul>
+      <li><a href="/projecthub/">Project Hub<i class="fa-solid fa-arrow-right"></i></a></li>
+      <!-- <li><a href="#project-hub">Project Hub</a></li> -->
+      <li><a href="/projectref/">Project Refinery<i class="fa-solid fa-arrow-right"></i></a></li>
+      <li><a href="/api/finalfaq">Help<i class="fa-solid fa-arrow-right"></i></a></li>
+    </ul>
+  </nav>
+
+  <nav class="sub-nav">
+    <ul>
+      <li class="dropdown">
+        <a href="javascript:void(0);" class="dropbtn">Project Management</a>
+        <div class="dropdown-content">
+          <button onclick="location.href='/project/project-details'">Add Group Project</button>
+          <button onclick="location.href='/projectref/submit'"> Add Project Refinery</button>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="/student/add-members-page" class="dropbtn">Create Your Team</a>
+        
+
+  </nav>
+
+  <main>
+    <!-- Add Back: Display Flash Messages Section -->
+    <% if (typeof success_msg !== 'undefined' && success_msg && success_msg.length > 0) { %>
+        <div class="alert alert-success"><%= success_msg %></div>
+    <% } %>
+    <% if (typeof error_msg !== 'undefined' && error_msg && error_msg.length > 0) { %>
+        <div class="alert alert-danger"><%= error_msg %></div>
+    <% } %>
+    <!-- END Add Back Section -->
+
+
+    <!-- === Unified Team & Project Section === -->
+    <div class="team-project-section">
+      <h3>Your Team & Project</h3>
+      <% if (student && student.groupId) { %>
+        <div class="team-details">
+          <p><strong>Team Name:</strong> <%= student.groupId.groupName %></p>
+          <p><strong>Group Number:</strong> <%= student.groupId.groupNumber %></p>
+          <p><strong>Project Guide:</strong> <%= student.groupId.guideId ? student.groupId.guideId.name : 'Not Assigned' %></p>
+          <p><strong>Academic Year:</strong> <%= student.groupId.academicYear %></p>
+          <p><strong>Year:</strong> <%= student.groupId.year %></p>
+        </div>
+        <div class="team-members">
+          <h3>Team Members:</h3>
+          <form id="edit-team-form" action="/student/edit-members" method="POST" style="display: block;">
+            <ul id="team-member-list">
+              <% student.groupId.members.forEach(member => { %>
+                <li class="member-item" data-member-id="<%= member._id %>">
+                  <span class="member-name">
+                    <%= member.name %>
+                    <% if (member._id.equals(student._id)) { %>
+                      (You<% if (isLeader) { %> - Leader<% } %>)
+                    <% } else if (student.groupId.leader && member._id.equals(student.groupId.leader._id)) { %>
+                      (Leader)
+                    <% } %>
+                    - <%= member.rollNo %>
+                    <!-- Display contribution next to member name -->
+                    <% const contribution = student.groupId.contributions.find(c => c.memberId.equals(member._id)); %>
+                    <span class="contribution-text" data-member-id="<%= member._id %>">
+                      (<%= contribution ? contribution.contribution : 'No contribution specified' %>)
+                    </span>
+                  </span>
+                  <% if (isLeader && !member._id.equals(student.groupId.leader)) { %>
+                    <label class="remove-member-control" style="display: none; color: red; margin-left: 15px; cursor: pointer;">
+                      <input type="checkbox" name="membersToRemove" value="<%= member._id %>"> Remove
+                    </label>
+                  <% } %>
+                  <input type="hidden" name="currentMembers" value="<%= member._id %>">
+                </li>
+              <% }); %>
+            </ul>
+            <% if (student.groupId.members.length < 5) { %>
+              <h3>Add New Members:</h3>
+              <div id="new-members-section">
+                <!-- Change name attribute to newMemberIdentifiers -->
+                <input type="text" name="newMemberIdentifiers" placeholder="Enter roll number or email" style="width: 100%; margin-bottom: 10px;">
+                <!-- Change name attribute to newMemberContributions -->
+                <input type="text" name="newMemberContributions" placeholder="Enter contribution" style="width: 100%; margin-bottom: 10px;">
+                <!-- Optional: Add a button here if you want to allow adding more than one new member dynamically via JS -->
+              </div>
+            <% } %>
+            <% if (isLeader) { %>
+              <div class="team-edit-buttons" style="margin-top: 15px; text-align: center;">
+                <button type="button" id="edit-team-btn">Edit Team Members</button>
+                <button type="submit" id="save-team-btn" style="display: none;">Save Changes</button>
+                <button type="button" id="cancel-edit-btn" style="display: none;">Cancel</button>
+                <button type="button" onclick="confirmDisbandTeam()" id="disband-team-btn">Disband Team</button>
+                <!-- New button for editing contributions -->
+                <button type="button" id="edit-contributions-btn" onclick="toggleContributionEdit()">Edit Contributions</button>
+              </div>
+            <% } %>
+          </form>
+        </div>
+        <%# This block handles showing the submitted project %>
+        <% if (project) { %> <%# Checks if a project object exists for the group %>
+          <div class="submitted-project-info">
+            <h3>Submitted Project</h3>
+            <%# Displays the project title %>
+            <p><strong>Project Title:</strong> <%= project.projectTitle %></p>
+            <%# Provides a link (styled as a button) to view details %>
+            <a href="/project/project-details" class="btn btn-view-project">View Project Details</a>
+          </div>
+        <% } %>
+        <%# End of submitted project block %>
+      <% } else { %>
+        <p>You are not currently part of a team.</p>
+      <% } %>
+    </div>
+    <!-- === End Unified Section === -->
+
+    <hr>
+
+    <!-- === Feedback Section === -->
+    <div class="feedback-section" style="margin-top: 20px;">
+      <h3>Guide Feedback</h3>
+      <% if (student && student.groupId && feedbackData && feedbackData.length > 0) { %>
+        <table class="table table-bordered table-striped" style="width: 100%; border-collapse: collapse;"> <!-- Add some basic styling -->
+          <thead>
+            <tr style="background-color: #f2f2f2;">
+              <th style="border: 1px solid #ddd; padding: 8px;">Seminar Number</th>
+              <th style="border: 1px solid #ddd; padding: 8px;">Feedback</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% feedbackData.forEach(item => { %>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;"><%= item.seminar %></td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><%= item.feedback %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else if (student && student.groupId) { %>
+        <p>No feedback has been provided by your guide yet.</p>
+      <% } else { %>
+        <!-- Optional: Message if student is not in a group -->
+        <p>You need to be part of a group to receive feedback.</p>
+      <% } %>
+    </div>
+    <!-- === End Feedback Section === --> 
+</main>
+
+  <%# Add JavaScript at the bottom of the body or link to an external file %>
+  <script>
+      // Ensure this script runs after the DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+          const editBtn = document.getElementById('edit-team-btn');
+          const saveBtn = document.getElementById('save-team-btn');
+          const cancelBtn = document.getElementById('cancel-edit-btn');
+          const disbandBtn = document.getElementById('disband-team-btn');
+          const removeControls = document.querySelectorAll('.remove-member-control');
+          const form = document.getElementById('edit-team-form');
+
+          // Only add listeners if the buttons exist (i.e., if user is leader)
+          if (editBtn && saveBtn && cancelBtn) {
+              editBtn.addEventListener('click', () => {
+                  // Enter edit mode
+                  removeControls.forEach(control => control.style.display = 'inline-block'); // Show remove checkboxes/labels
+                  editBtn.style.display = 'none';    // Hide Edit button
+                  disbandBtn.style.display = 'none'; // Hide Disband button during edit
+                  saveBtn.style.display = 'inline-block'; // Show Save button
+                  cancelBtn.style.display = 'inline-block'; // Show Cancel button
+              });
+
+              cancelBtn.addEventListener('click', () => {
+                  // Exit edit mode without saving
+                  removeControls.forEach(control => {
+                      control.style.display = 'none'; // Hide remove controls
+                      control.querySelector('input[type="checkbox"]').checked = false; // Uncheck checkboxes
+                  });
+                  editBtn.style.display = 'inline-block'; // Show Edit button
+                  disbandBtn.style.display = 'inline-block'; // Show Disband button
+                  saveBtn.style.display = 'none';   // Hide Save button
+                  cancelBtn.style.display = 'none';  // Hide Cancel button
+              });
+
+          
+
+              form.addEventListener('submit', function(event) {
+                  event.preventDefault(); // Prevent default submission initially
+
+                  const currentMemberInputs = form.querySelectorAll('input[name="currentMembers"]');
+                  const membersToRemoveInputs = form.querySelectorAll('input[name="membersToRemove"]:checked');
+                  const membersToRemoveIds = Array.from(membersToRemoveInputs).map(input => input.value);
+
+                  // Clear previous hidden inputs if any (to avoid duplicates on multiple edits)
+                  form.querySelectorAll('input[name="membersToKeep"]').forEach(inp => inp.remove());
+
+                  // Add hidden inputs for members to keep
+                  currentMemberInputs.forEach(currentInput => {
+                      if (!membersToRemoveIds.includes(currentInput.value)) {
+                          const keepInput = document.createElement('input');
+                          keepInput.type = 'hidden';
+                          keepInput.name = 'membersToKeep';
+                          keepInput.value = currentInput.value;
+                          form.appendChild(keepInput);
+                      }
+                  });
+
+                  // Now submit the form programmatically
+                  form.submit();
+              });
+          }
+
+          // Keep the disband confirmation separate
+          window.confirmDisbandTeam = function() {
+              if (confirm('Are you sure you want to disband this team? This action cannot be undone.')) {
+                  // Use fetch or a hidden form to send a POST request to a disband route
+                  // Example using a form:
+                  const disbandForm = document.createElement('form');
+                  disbandForm.method = 'POST';
+                  disbandForm.action = '/student/disband-team'; // Needs a new route
+                  document.body.appendChild(disbandForm);
+                  disbandForm.submit();
+              }
+          }
+
+          // Function to toggle contribution editing
+          window.toggleContributionEdit = function() {
+              // --- Add a check to prevent multiple clicks ---
+              const editContributionsBtn = document.getElementById('edit-contributions-btn');
+              if (editContributionsBtn.textContent === 'Submit Contributions') {
+                  // Already in edit mode, maybe submit or do nothing
+                  // For now, let's prevent re-toggling while inputs are present
+                  const firstInput = document.querySelector('.contribution-input');
+                  if (firstInput) return; // Exit if inputs already exist
+              }
+              // --- End check ---
+
+              document.querySelectorAll('.contribution-text').forEach(span => {
+                  const memberId = span.getAttribute('data-member-id');
+                  // Ensure textContent is read correctly, trim whitespace
+                  let currentText = span.textContent.trim();
+                  // Remove potential surrounding parentheses if they exist
+                  if (currentText.startsWith('(') && currentText.endsWith(')')) {
+                      currentText = currentText.slice(1, -1).trim();
+                  }
+                  // Handle the 'No contribution specified' case
+                  if (currentText === 'No contribution specified') {
+                      currentText = ''; // Start with an empty input if none was specified
+                  }
+
+
+                  const input = document.createElement('input');
+                  input.type = 'text';
+                  input.value = currentText;
+                  input.setAttribute('data-member-id', memberId);
+                  input.className = 'contribution-input';
+                  // Add some basic styling or use CSS classes
+                  input.style.width = '80%'; // Example style
+                  input.style.marginLeft = '5px';
+
+                  span.replaceWith(input);
+              });
+
+              // Change the button to submit contributions
+              editContributionsBtn.textContent = 'Submit Contributions';
+              editContributionsBtn.onclick = submitContributions; // Assign the correct submit function
+
+              // --- Add a Cancel button ---
+              const cancelButton = document.createElement('button');
+              cancelButton.type = 'button';
+              cancelButton.textContent = 'Cancel Edit';
+              cancelButton.id = 'cancel-contribution-edit-btn';
+              cancelButton.style.marginLeft = '10px';
+              cancelButton.onclick = cancelContributionEdit; // Assign cancel function
+              editContributionsBtn.parentNode.insertBefore(cancelButton, editContributionsBtn.nextSibling);
+              // --- End Add Cancel button ---
+          }
+
+          // --- Add Function to cancel contribution editing ---
+          window.cancelContributionEdit = function() {
+              document.querySelectorAll('.contribution-input').forEach(input => {
+                  const memberId = input.getAttribute('data-member-id');
+                  // Find the original contribution text (requires storing it or re-fetching, complex)
+                  // Simpler: Just revert to a span structure. User needs to refresh for original text.
+                  // Or, ideally, fetch the original text again if needed.
+                  // For now, let's just put back a placeholder span.
+                  const span = document.createElement('span');
+                  span.className = 'contribution-text';
+                  span.setAttribute('data-member-id', memberId);
+                  // We lost the original text here, so maybe just reload or show a generic message
+                  // A better approach would be to store original values when editing starts.
+                  // Let's just reload the page for simplicity on cancel for now.
+                  // span.textContent = '(Original text lost - refresh page)'; // Placeholder
+                  input.replaceWith(span); // Replace input with span
+              });
+
+              // Change button back
+              const editContributionsBtn = document.getElementById('edit-contributions-btn');
+              editContributionsBtn.textContent = 'Edit Contributions';
+              editContributionsBtn.onclick = toggleContributionEdit;
+
+              // Remove cancel button
+              const cancelButton = document.getElementById('cancel-contribution-edit-btn');
+              if (cancelButton) {
+                  cancelButton.remove();
+              }
+              // Reload page to restore original state simply
+              window.location.reload();
+          }
+          // --- End Cancel Function ---
+
+
+          // Function to submit edited contributions using Fetch
+          window.submitContributions = function() {
+              const contributionsData = [];
+              let allValid = true; // Flag for validation
+
+              document.querySelectorAll('.contribution-input').forEach(input => {
+                  const memberId = input.getAttribute('data-member-id');
+                  const contributionText = input.value.trim(); // Trim whitespace
+
+                  // Basic Validation: Ensure contribution is not empty
+                  if (!contributionText) {
+                      alert(`Contribution cannot be empty for member ID: ${memberId || 'Unknown'}. Please fill it in or cancel.`);
+                      input.style.borderColor = 'red'; // Highlight the empty field
+                      allValid = false;
+                  } else {
+                       input.style.borderColor = ''; // Reset border color if valid
+                  }
+
+                  if (memberId && contributionText) { // Only add if valid memberId and text exist
+                      contributionsData.push({
+                          memberId: memberId,
+                          contribution: contributionText
+                      });
+                  } else if (!memberId) {
+                      console.error("Input field found without data-member-id attribute:", input);
+                      allValid = false; // Consider this invalid
+                  }
+              });
+
+              // Stop submission if any validation failed
+              if (!allValid) {
+                  console.log("Submission stopped due to validation errors.");
+                  return;
+              }
+
+              // Check if we actually collected any data
+              if (contributionsData.length === 0) {
+                  alert("No contribution data found to submit.");
+                  console.log("No valid contribution inputs found.");
+                  return;
+              }
+
+              console.log("Submitting contributions:", contributionsData); // Log data before sending
+
+              // Use Fetch API to send JSON data
+              fetch('/student/edit-contributions', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json' // Optional: Indicate expected response type
+                      // Add CSRF token header if needed by your backend setup
+                  },
+                  credentials: 'include', // Include cookies if needed for authentication
+                  body: JSON.stringify({ contributions: contributionsData }) // Send data in the expected format
+              })
+              .then(response => {
+                  // Check if response is ok (status in the range 200-299)
+                  if (response.ok) {
+                      // Assuming successful update, redirect or show message
+                      // Redirecting back to the dashboard will show flash messages set by the backend
+                      window.location.href = '/student/finaldash'; // Redirect to refresh and see messages
+                  } else {
+                      // Handle errors - try to parse JSON error message from backend if available
+                      return response.json().then(err => {
+                           // Display error from backend response body
+                           alert(`Error updating contributions: ${err.error || 'Unknown server error'}`);
+                           console.error("Server responded with error:", err);
+                      }).catch(() => {
+                           // If parsing JSON fails or no JSON body, show generic error
+                           alert(`Error updating contributions. Status: ${response.status}`);
+                           console.error("Server responded with status:", response.status);
+                      });
+                  }
+              })
+              .catch(error => {
+                  // Handle network errors
+                  console.error('Network error submitting contributions:', error);
+                  alert('Network error. Please check your connection and try again.');
+              });
+          }
+          // ... rest of the script ...
+      });
+  </script>
+
+  <footer class="footer">
+    <div class="footer-left">
+    <div class="footer-logo">
+      <img src="/IMAGES/white logo.png" alt="Logo" >
+    </div>
+      <p>"Your Academic Projects, Our Priority"</p>
+   </div>
+
+    <div class="footer-links">
+      <h3>QUICK LINKS</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="Final_Year_FAQ.html">FAQs</a></li>
+        <li><a href="#register">Register</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h3>GET IN TOUCH</h3>
+      <p>Email: thesisit@gmail.com</p>
+    </div>
+  </footer>
+</div>
+
+
+  <script src="/JS/stud_final.js"></script>
+</body>
+</html>

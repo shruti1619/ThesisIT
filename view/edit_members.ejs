@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Member</title>
+    <link rel="stylesheet" href="/CSS/edit_members.css">
+</head>
+<body id="edit_members_page">
+    <header>
+        <h2>Edit Member</h2>
+    </header>
+    <section id="content">
+        <form id="edit-member-form">
+            <div class="section">
+                <h3>Team Name</h3>
+                <input type="text" id="edit-team-name" placeholder="Name of your team" required>
+            </div>
+            <div class="section">
+                <h3>Team Leader</h3>
+                <label for="edit-leader-name">Enter name of team leader</label>
+                <input type="text" id="edit-leader-name" placeholder="Name (roll no)" required>
+                <label for="edit-leader-email">Email ID</label>
+                <input type="email" id="edit-leader-email" placeholder="enter email" required>
+                <label for="edit-leader-mobile">Mobile No.</label>
+                <input type="tel" id="edit-leader-mobile" placeholder="mobile no." required>
+            </div>
+            <div class="section">
+                <h3>Team Members</h3>
+                <div class="members-container">
+                    <div class="member">
+                        <label for="edit-member1-name">Enter name of team member1</label>
+                        <input type="text" id="edit-member1-name" placeholder="Name (roll no)">
+                        <label for="edit-member1-email">Email ID</label>
+                        <input type="email" id="edit-member1-email" placeholder="enter email">
+                        <label for="edit-member1-mobile">Mobile No.</label>
+                        <input type="tel" id="edit-member1-mobile" placeholder="mobile no.">
+                    </div>
+                    <div class="member">
+                        <label for="edit-member2-name">Enter name of team member2</label>
+                        <input type="text" id="edit-member2-name" placeholder="Name (roll no)">
+                        <label for="edit-member2-email">Email ID</label>
+                        <input type="email" id="edit-member2-email" placeholder="enter email">
+                        <label for="edit-member2-mobile">Mobile No.</label>
+                        <input type="tel" id="edit-member2-mobile" placeholder="mobile no.">
+                    </div>
+                    <div class="member">
+                        <label for="edit-member3-name">Enter name of team member3</label>
+                        <input type="text" id="edit-member3-name" placeholder="Name (roll no)">
+                        <label for="edit-member3-email">Email ID</label>
+                        <input type="email" id="edit-member3-email" placeholder="enter email">
+                        <label for="edit-member3-mobile">Mobile No.</label>
+                        <input type="tel" id="edit-member3-mobile" placeholder="mobile no.">
+                    </div>
+                    <div class="member">
+                        <label for="edit-member4-name">Enter name of team member4</label>
+                        <input type="text" id="edit-member4-name" placeholder="Name (roll no)">
+                        <label for="edit-member4-email">Email ID</label>
+                        <input type="email" id="edit-member4-email" placeholder="enter email">
+                        <label for="edit-member4-mobile">Mobile No.</label>
+                        <input type="tel" id="edit-member4-mobile" placeholder="mobile no.">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Submit Changes</button>
+        </form>
+    </section>
+    <script src="/JS/edit_members.js"></script>
+</body>
+</html>

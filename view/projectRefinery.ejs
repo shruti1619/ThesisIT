@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Refinery</title>
+    <link rel="stylesheet" href="/CSS/projectRefinery.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Project Refinery</h1>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr. no</th>
+                        <th>Project Title</th>
+                        <th>Year</th>
+                        <th>Academic Year</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% projects.forEach((project, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %>.</td>
+                        <td><%= project.projectTitle %></td>
+                        <!-- EDIT: Access year and academicYear from the populated userId object -->
+                        <%# Check if userId was successfully populated before accessing its properties %>
+                        <td><%= project.userId ? project.userId.year : 'N/A' %></td>
+                        <td><%= project.userId ? project.userId.academicYear : 'N/A' %></td>
+                        <!-- End Edit -->
+                        <td><button class="view-button" data-id="<%= project._id %>">View</button></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+    <script src="/JS/projectRefinery.js"></script>
+</body>
+</html>

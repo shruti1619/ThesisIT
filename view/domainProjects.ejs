@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/domainProjects.css"> <!-- New CSS file for this page -->
+    <title>Projects in <%= domainName %></title>
+</head>
+<body>
+
+    <!-- Navbar-like Header -->
+    <div class="domain-header">
+        <h1>Projects in Domain: <%= domainName %></h1>
+    </div>
+
+    <div class="container">
+        <!-- Display Flash Messages -->
+        <% if (typeof success_msg !== 'undefined' && success_msg && success_msg.length > 0) { %>
+            <div class="alert alert-success"><%= success_msg %></div>
+        <% } %>
+        <% if (typeof error_msg !== 'undefined' && error_msg && error_msg.length > 0) { %>
+            <div class="alert alert-danger"><%= error_msg %></div>
+        <% } %>
+
+        <% if (projects && projects.length > 0) { %>
+            <!-- Project Table -->
+            <table class="projects-table">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Project Title</th>
+                        <th>Academic Year</th>
+                        <th>Year</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% projects.forEach((project, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= project.projectTitle %></td>
+                            <%# Access data via populated groupId %>
+                            <td><%= project.groupId ? project.groupId.academicYear : 'N/A' %></td>
+                            <td><%= project.groupId ? project.groupId.year : 'N/A' %></td>
+                            <td>
+                                <!-- Ensure the link points to the correct project details route -->
+                                <a href="/projecthub/details/<%= project._id %>" class="btn-view-details">View Details</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No projects found in the domain "<%= domainName %>".</p>
+        <% } %>
+
+        <div class="back-button-container">
+            <a href="/student/finaldash" class="btn-back">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Optional: Include a common footer -->
+    <%# include('partials/footer') %>
+
+</body>
+</html>

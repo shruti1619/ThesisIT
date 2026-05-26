@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Team</title>
+    <link rel="stylesheet" href="/CSS/addmembers.css"> <!-- Consider renaming CSS if needed -->
+</head>
+<body id="addmembers_page">
+    <div class="container">
+        <h2>Create New Team</h2>
+        <!-- Display messages from backend if any (e.g., errors) -->
+        <% if (typeof message !== 'undefined' && message) { %>
+            <div class="message <%= typeof error !== 'undefined' && error ? 'error' : 'success' %>">
+                <%= message %>
+            </div>
+        <% } %>
+
+        <!-- The main form starts here -->
+        <form id="team-form" action="/student/create-group" method="POST">
+            <div class="section">
+                <h3>Team Details</h3>
+                <label for="groupName">Team Name</label>
+                <input type="text" id="groupName" name="groupName" placeholder="Enter a unique team name" required>
+
+                <label for="groupNumber">Group Number</label>
+                <input type="number" id="groupNumber" name="groupNumber" placeholder="Enter assigned group number" required>
+            </div>
+
+            <!-- Add an ID to this section -->
+            <div class="section" id="leader-section">
+                <!-- This section will be populated by public/JS/addmembers.js -->
+                <h3>Team Leader (You)</h3>
+                <!-- Removed EJS tags and added spans with IDs -->
+                <p>Name: <span id="leader-name">Loading...</span></p>
+                <p>Email: <span id="leader-email">Loading...</span></p>
+                <p>Roll No: <span id="leader-rollno">Loading...</span></p>
+                <p>Academic Year: <span id="leader-academic-year">Loading...</span></p>
+                <p>Year: <span id="leader-year">Loading...</span></p>
+                <!-- Hidden inputs should also be added by JS, not via EJS here -->
+
+                <!-- Add contribution field for the leader -->
+                <label for="leader-contribution">Your Contribution</label>
+                <input type="text" id="leader-contribution" name="leaderContribution" placeholder="Enter your contribution" required>
+            </div>
+
+            <!-- Removed the duplicate <form> tag that was here -->
+            <div class="section"> <!-- Added a div wrapper for consistency -->
+                <h3>Project Guide</h3>
+                <label for="guideId">Select Project Guide</label>
+                <select id="guideId" name="guideId" required>
+                    <option value="" disabled selected>-- Loading Guides --</option>
+                    <!-- Options will be populated by JS -->
+                    <!-- Removed the EJS comment line -->
+                </select>
+            </div>
+
+            <div class="section">
+                <h3>Add Team Members (Enter Roll Number or Email)</h3>
+                <!-- Add a placeholder paragraph for the instruction text -->
+                <p id="members-instruction" style="margin-bottom: 15px;">Loading class details...</p> <!-- Added some margin for spacing -->
+
+                <!-- This container will hold the actual member input fields -->
+                <div class="members-container">
+                    <!-- Remove the EJS loop from here. JS will populate this div. -->
+                    <% /* for(let i = 1; i <= 4; i++) { %>
+                    <div class="member">
+                        <label for="member<%= i %>_identifier">Member <%= i %> Identifier</label>
+                        <input type="text" id="member<%= i %>_identifier" name="memberIdentifiers" placeholder="Enter Roll No or Email" required>
+
+                        <label for="member<%= i %>_contribution">Member <%= i %> Contribution</label>
+                        <input type="text" id="member<%= i %>_contribution" name="memberContributions" placeholder="Enter Contribution" required>
+                    </div>
+                    <% } */ %>
+                </div>
+            </div>
+
+            <!-- Ensure other parts of the form don't use EJS leader variables either -->
+
+            <button type="submit" class="submit-btn">Create Team</button>
+        </form> <!-- This is the single closing tag for the main form -->
+    </div>
+    <!-- Link to your JS file for any client-side validation if needed -->
+    <script src="/JS/addmembers.js"></script>
+</body>
+</html>

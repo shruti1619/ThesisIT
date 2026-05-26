@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/CSS/admin.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="menu-icon" id="menu-icon"><B>&#9776; Admin Dashboard </B></div>
+            <div class="search-bar-container">
+                <input type="text" placeholder="Search Here" id="search-bar">
+                <img src="/IMAGES/3 line.png" class="dropdown-lines" alt="Dropdown Lines">
+               
+                <!-- === Modified Dropdown Menu === -->
+      <ul class="dropdown">
+        <span class="close-btn">&times;</span>
+        <% if (typeof projectDomains !== 'undefined' && projectDomains.length > 0) { %>
+          <% projectDomains.forEach(domain => { %>
+            <% const encodedDomain = encodeURIComponent(domain); %>
+            <%# Prepend /student/ to the href %>
+            <li><a href="/student/projects/domain/<%= encodedDomain %>"><%= domain %></a></li>
+          <% }); %>
+        <% } else { %>
+          <li><a href="#">No domains found</a></li>
+        <% } %>
+      </ul>
+                <img src="/IMAGES/search bar.png" class="search-icon" alt="Search Icon">
+              </div>
+                
+            <div class="nav-icons">
+                <a href="#"><img src="/IMAGES/noti.png" alt="Notifications" class="nav-icon"></a>
+                <a href="/admin/profile"><img src="/IMAGES/profile.png" alt="Profile" class="nav-icon"></a>
+            </div>
+        </div> 
+        
+    </header>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <div class="logo">
+           <a href="/index.html"><img src="/IMAGES/logo.png" alt="ThesisIT Logo"></a> 
+        </div>
+        <ul>
+            <li><a href="/projecthub/"><img src="/IMAGES/PH.png" alt=""> Project Hub</a></li>
+            <li><a href="/projectref/"><img src="/IMAGES/PR.png" alt=""> Project Refinery</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Ensure the info-box has an onclick attribute -->
+        <div class="info-box" style="cursor: pointer;" onclick="showStudentDetails()">
+            <h3>Total Students Enrolled: <%= totalStudentCount %></h3>
+            <img src="/IMAGES/totalEnrolled.png" alt="Students Icon">
+        </div>
+        <div class="info-box" style="cursor: pointer;" onclick="window.location.href='/admin/guide-details'">
+            <h3>Total Project Guides Enrolled: <%= totalProjectGuides %></h3>
+            <img src="/IMAGES/projectGuideEnrolled.png" alt="Guides Icon">
+        </div>
+        <div class="info-box"style="cursor: pointer;" onclick="showaluminiDetails()">
+            <p>Total Aluminis enrolled</p>
+            <img src="/IMAGES/projectGuideEnrolled.png" alt="Guides Icon">
+        </div>
+        <!-- Button to mark final year students as alumni -->
+        
+    </div>
+
+    <!-- Student Details Section -->
+    <div id="studentDetailsSection" style="display: none;">
+        <h3>Student Details</h3>
+        <div id="studentDetails"></div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-left">
+            <div class="logo"> 
+                <img src="/IMAGES/white logo.png" alt="Thessit Logo">
+            </div>
+            <p>"Your Academic Projects, Our Priority"</p>
+        </div>
+        <div class="footer-middle">
+            <h3>QUICK LINKS</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="homeFAQ.html">FAQs</a></li>
+                <li><a href="signin.html">Register</a></li>
+            </ul>
+        </div>
+        <div class="footer-right">
+            <h3>GET IN TOUCH</h3>
+            <p>Email: thessisit@gmail.com</p>
+        </div>
+    </footer>
+
+    <script src="/JS/admin.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Details</title>
+    <link rel="stylesheet" href="/CSS/guideDetails.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Guide Details</h1>
+        <table class="guide-table">
+                <thead>
+                    <tr>
+                        <th>Group Name</th>
+                        <th>Year</th>
+                        <th>Academic Year</th>
+                        <th>Project Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% groups.forEach(group => { %>
+                        <tr>
+                            <td><%= group.groupName %></td>
+                            <td><%= group.year %></td>
+                            <td><%= group.academicYear %></td>
+                            <td><%= group.projectId ? group.projectId.projectTitle : 'No Project Assigned' %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            
+        </table>
+    </div>
+</body>
+</html>
