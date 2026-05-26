@@ -213,7 +213,10 @@ screenshots/
 | Name | Role |
 |------|------|
 | Shruti Morey | Developer |
-| *(Add teammates)* | Developer |
+| Payal Jadhav | Developer |
+| Rutuja Narad | Developer |
+| Pranav Gore | Developer |
+| Shruti Mishra | Designer |
 
 ---
 
